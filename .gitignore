@@ -1,0 +1,10 @@
+.bashrc                                                                                                                                                                                  
+.bup/                                                                                                                                                                                    
+.cache/                                                                                                                                                                                  
+.forever/                                                                                                                                                                                
+.gitconfig                                                                                                                                                                               
+.sage/                                                                                                                                                                                   
+.sagemathcloud/                                                                                                                                                                          
+.ssh/                                                                                                                                                                                    
+*.term  
+*~
