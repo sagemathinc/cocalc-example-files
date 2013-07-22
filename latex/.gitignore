@@ -1,0 +1,7 @@
+*.pdf
+*.py
+*.py[co]
+*.aux
+*.tmp
+*.log
+*.sage
