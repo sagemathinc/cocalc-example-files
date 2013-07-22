@@ -1,3 +1,4 @@
+*.sage-backup
 .bashrc                                                                                                                                                                                  
 .bup/                                                                                                                                                                                    
 .cache/                                                                                                                                                                                  

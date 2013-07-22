@@ -9,6 +9,7 @@ Authors
 -------
 
 * Harald Schilly
+* William Stein
 
 License
 -------
