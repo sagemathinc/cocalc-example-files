@@ -1,4 +1,5 @@
 *.sage-backup
+*.synctex.gz
 .bashrc                                                                                                                                                                                  
 .bup/                                                                                                                                                                                    
 .cache/                                                                                                                                                                                  
@@ -9,3 +10,4 @@
 .ssh/                                                                                                                                                                                    
 *.term  
 *~
+\.*

@@ -20,11 +20,11 @@ def d3(s=None,obj=None,css=None):
         return f
     else:
         f(s)
-︡5a27027b-13d8-4c5f-8a02-6fc44be59273︡{"auto":true}︡
+︡59cd75c2-4cb2-437d-a61f-c3c5386c3304︡{"auto":true}︡
 ︠40e660af-ef64-4f8e-a7f7-7eb876abf0dca︠
 %auto
 %default_mode d3
-︡bd285cdd-7264-43bb-8372-f7621f99339d︡{"auto":true}︡
+︡fa0c0d8c-1839-41e6-a205-22d720e8fd78︡{"auto":true}︡
 ︠f2e20154-2c81-487c-94b9-e8e11c2d6f2e︠
 d.append("p")
  .text("hello there, world")
