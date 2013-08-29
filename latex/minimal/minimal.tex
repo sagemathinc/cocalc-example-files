@@ -1,7 +1,9 @@
 \documentclass{article}
 
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath}
 \usepackage{sagetex}
+\usepackage{url}
 
 \begin{document}
 
@@ -13,7 +15,7 @@ Testing $\frac{1}{178} = \sage{n(1/178)}$.
 
 is always fun ...
 
-\sageplot[width=.8\textwidth]{plot(sin(x), (x,-10,10))}
+\sageplot[width=.5\textwidth]{plot(sin(x), (x,-10,10))}
 
 \section{This is a test}
 
@@ -28,8 +30,10 @@ it from somewhere.
 Here's some Sage code:
 
 \begin{sageblock}
-f(x) = exp(x) * sin(2*x)
+f(x) = sin(cos(2*x)^2 / (2+x))
 \end{sageblock}
+
+The first derivative of $f$ is $\sage{diff(f,x)}$.
 
 The second derivative of $f$ is
 
@@ -38,8 +42,27 @@ The second derivative of $f$ is
   \sage{diff(f, x, 2)(x)}.
 \]
 
-Here's a plot of $f$ from $-1$ to $1$:
+Here's a plot of $f$ from $-1$ to $10$:
 
-\sageplot[width=.8\textwidth]{plot(f, -1, 1)}
+\sageplot[width=.5\textwidth]{plot(f, -1, 10)}
+
+\section{AMS Math}
+
+$$P\left(A=2\middle|\frac{A^2}{B}>4\right)$$
+
+Matrix:
+
+\begin{equation*}
+A_{m,n} =
+ \begin{pmatrix}
+  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+ \end{pmatrix}
+\end{equation*}
+
+More here: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}.
+
 
 \end{document}
