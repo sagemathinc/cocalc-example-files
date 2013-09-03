@@ -11,6 +11,8 @@ Authors
 
 * Harald Schilly
 * William Stein
+* Theron Hitchman (SageBeginnerTutorial)
+* Gustav Delius
 
 License
 -------
