@@ -7,9 +7,10 @@ This is a Sagemath Cloud worksheet version of Frank McCown's tutorial from <a ta
 
 First, we put the worksheet into R mode (otherwise you would have to type %r at the beginning of each cell):
 ︡b681936d-d97e-4e2d-8989-45f0ee24bdeb︡{"html":"<h1>Graphics using R in the Sagemath Cloud</h1>\n\nThis is a Sagemath Cloud worksheet version of Frank McCown's tutorial from <a target=\"_blank\" href=\"http://www.harding.edu/fmccown/r/\">http://www.harding.edu/fmccown/r/</a>.\n\nFirst, we put the worksheet into R mode (otherwise you would have to type %r at the beginning of each cell):"}︡
-︠52916e12-5c4c-4f11-aa93-8014696978b6︠
+︠52916e12-5c4c-4f11-aa93-8014696978b6a︠
+%auto
 %default_mode r
-︡a1631449-422e-4ec3-919b-faeaafd63f85︡
+︡9727d909-01a4-4199-99e5-dd8e82fd3e66︡{"auto":true}︡
 ︠27988413-3a2d-4ac7-8608-b9d571d8da54i︠
 %md
 
@@ -545,7 +546,17 @@ text((1:5)+0.4, rep(2,5), cex=0.6, (15:19))
 points((1:6)*0.8+0.2, rep(1,6), cex=2, pch=(20:25))
 text((1:6)*0.8+0.5, rep(1,6), cex=0.6, (20:25))
 ︡a226c2f6-94e0-42c3-a754-17f4372437a6︡{"file":{"show":true,"uuid":"d3879f1a-fe53-40fb-9c21-6f3a2be1d44d","filename":"/tmp/cb1be559-0ab1-416a-b28f-5d1e72ea6236.png"}}︡{"stdout":"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"}︡{"stdout":"\n"}︡
+︠f08984b2-29b9-4235-ac13-b254fa10d8f1i︠
+%md
+# Bonus -- you can also use ggplot2
+︡ce1bd901-7c68-4969-9492-bee40ef025f6︡{"html":"<h1>Bonus &#8211; you can also use ggplot2</h1>\n"}︡
 ︠d581385f-4c83-46cc-8145-8e10aaeabda1︠
+require(ggplot2)
+
+qplot(age, circumference, data = Orange, geom = c('point', "line"), colour = Tree,
+  main = "How does orange tree circumference vary with age?")
+︡56e3be97-de3c-4d9a-95cb-a62b47d9e9ae︡{"file":{"show":true,"uuid":"d0519f68-67dc-45d4-b8c4-83f784b1c6e6","filename":"/tmp/6a468e66-864b-4382-b309-8c056b290403.png"}}︡{"stdout":"Loading required package: ggplot2\n\n"}︡{"stdout":"\n"}︡
+︠26cc2b8d-00c2-4a45-93b5-4ae032d7fa4e︠
 
 
 
