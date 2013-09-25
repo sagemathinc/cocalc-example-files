@@ -1,3 +1,7 @@
+cmdline.term
+sage-plots-for*.tex
+*.sout
+*.scmd
 *.sage-backup
 *.synctex.gz
 .bashrc                                                                                                                                                                                  
