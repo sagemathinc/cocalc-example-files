@@ -5,6 +5,8 @@ sage-plots-for*.tex
 *.sage-backup
 *.synctex.gz
 .bashrc                                                                                                                                                                                  
+fortran/cylinder
+
 .bup/                                                                                                                                                                                    
 .cache/                                                                                                                                                                                  
 .forever/                                                                                                                                                                                
