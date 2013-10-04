@@ -1,13 +1,22 @@
 ︠5eb63087-9306-44bd-8d96-ce0a74839ee3i︠
 %md
-Sage Basics
------------
-︡72d960c0-e81a-4c80-94b7-e38edc09fa31︡{"html":"<h2>Sage Basics</h2>\n"}︡
+## Sage Basics
+
+Evaluate all cells via pressing the `Shift`+`Return` keys or the small "play" button in the menu.
+
+︡12fbd4c0-f8e2-4b08-8b03-79b5b1abf4fb︡{"html":"<h2>Sage Basics</h2>\n\n<p>Evaluate all cells via pressing the <code>Shift</code>+<code>Return</code> keys or the small &#8220;play&#8221; button in the menu.</p>\n"}︡
 ︠e3f5916d-1904-41e1-b02c-2b60185db6a5︠
 x = var('x')
 solve(2*x^2 + 3 * x - 10 == 0, x)
 ︡c93eed45-6be0-4c97-b1f3-9363b2518288︡{"stdout":"[x == -1/4*sqrt(89) - 3/4, x == 1/4*sqrt(89) - 3/4]\n"}︡
-︠5b8a9f7f-ccfd-449c-8732-df8aaab11ae9︠
+︠edeeb0ed-8818-43e7-a96c-4b702a64ae6c︠
+# expressions
+var('x y z')
+ex1 = 2 * x / (1 + x + y ^2) * sin(x*z)
+ex2 = ex1 / x / sin(x*z)
+show(ex1)
+show(ex2)
+︠3f2d7a03-8b3d-47f8-980a-79bda1f390e8︠
 phi = var('phi')
 find_root(cos(phi) * sin(tan(phi - pi/2)) == sqrt(phi), 0, 2 * pi)
 ︡c32787cd-d140-4090-9158-ce2871753c10︡{"stdout":"0.2637894422530672"}︡{"stdout":"\n"}︡
