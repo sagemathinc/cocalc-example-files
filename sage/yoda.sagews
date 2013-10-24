@@ -1,3 +1,10 @@
+︠208397ea-d7fa-48ba-bc04-aca5b39fd194i︠
+%md
+# Render Yoda in interactive 3d using THREE.js
+
+**Warning:** If your browser uses canvas instead of webgl, this will be painfully slow.  With webgl, it is very fast
+after the model loads.
+︡bd1e2a80-c63a-4521-beea-adc2fb6dc73a︡{"html":"<h1>Render Yoda in interactive 3d using THREE.js</h1>\n\n<p><strong>Warning:</strong> If your browser uses canvas instead of webgl, this will be painfully slow.  With webgl, it is very fast\nafter the model loads.</p>\n"}︡
 ︠73e5841f-fa48-4ae3-aa41-310668ffb884a︠
 %auto
 # Yoda! -- over 53,756 triangles.
