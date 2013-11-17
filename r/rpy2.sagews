@@ -14,39 +14,40 @@ import rpy2
 import rpy2.robjects as robjects
 from rpy2.robjects.packages import importr
 rpy2.__version__
-︡75016008-a409-40b5-a813-a5a409208075︡{"auto":true}︡{"stdout":"'2.3.8'\n"}︡
+︡21dac77a-6633-4dcf-9cf7-26d6b62b13b6︡{"auto":true}︡{"stdout":"'2.3.8'\n"}︡
 ︠a3bb2d3d-b5f3-42b6-a94c-0add5b823b54i︠
 %md
 ### Referencing R functions
 RPy2's `robjects` (or sometimes just imported as `ro`) exposes the R instance as `.r`.
 It is rather easy to get hold of functions and reference them from Python:
-︡86ee80c6-760a-4024-9f65-36844f66d75f︡{"html":"<h3>Referencing R functions</h3>\n\n<p>RPy2&#8217;s <code>robjects</code> (or sometimes just imported as <code>ro</code>) exposes the R instance as <code>.r</code>.\nIt is rather easy to get hold of functions and reference them from Python:</p>\n"}︡
+︡31edbbb3-8f4e-4230-b9cf-35a5348057e9︡{"html":"<h3>Referencing R functions</h3>\n\n<p>RPy2&#8217;s <code>robjects</code> (or sometimes just imported as <code>ro</code>) exposes the R instance as <code>.r</code>.\nIt is rather easy to get hold of functions and reference them from Python:</p>\n"}︡
 ︠08150b38-b19e-4975-b9e4-470916ea8f28︠
 c = robjects.r['c']
 summary = robjects.r['summary']
+︡eb7bbe96-7a16-4349-9dd1-bb2879a528b4︡
 ︠753c2844-6bd8-4199-bdbd-41aba057798c︠
 v1 = c(5,4.4,1,-1.8)
 sumv1 = summary(v1)
 print sumv1.__repr__()
-︡fb8b71ec-001f-4f58-ad48-a13e32697193︡{"stdout":"<FloatVector - Python:0x993d4d0 / R:0xcceffd0>\n[-1.800000, 0.300000, 2.700000, 2.150000, 4.550000, 5.000000]\n"}︡
+︡e850fc6f-e63d-4f51-b2a0-7b8820c275a4︡{"stdout":"<FloatVector - Python:0xcb87ef0 / R:0xb909818>\n[-1.800000, 0.300000, 2.700000, 2.150000, 4.550000, 5.000000]\n"}︡
 ︠2a554e52-b207-4eb2-a6ad-0ce14f5d0adc︠
 print sumv1
-︡e9c4347d-7986-4df1-9f2c-ab99bc724f33︡{"stdout":"   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  -1.80    0.30    2.70    2.15    4.55    5.00 \n\n"}︡
+︡2735446b-12e5-49cc-8c2f-46261839a697︡{"stdout":"   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  -1.80    0.30    2.70    2.15    4.55    5.00 \n\n"}︡
 ︠c1883ade-70ce-4b99-aa5e-adba5a2d84fa︠
 sumv1[3]
-︡87f4ffcf-5f32-410d-9feb-18b67e450fcc︡{"stdout":"2.15\n"}︡
+︡9686fa19-c86a-42a6-bb3e-61fdaecec7da︡{"stdout":"2.15\n"}︡
 ︠ba9d8e2e-283f-456b-8c66-24242ea614e5i︠
 %md
 ### Evaluating R code directly
-︡1e41724d-428f-46a2-9766-aaa95c5e6b92︡{"html":"<h3>Evaluating R code directly</h3>\n"}︡
+︡0155f3eb-aca1-4ddf-a837-c1c0bb96bd74︡{"html":"<h3>Evaluating R code directly</h3>\n"}︡
 ︠65244f5f-3779-42b3-a734-24c7ae2a5a96︠
 robjects.reval("""\
 zz <- 1:10
 print(paste("sd(zz) = ", sd(zz)))
 """)
-︡3f4c427e-6f73-48a8-bd46-c70f49d556f7︡{"stdout":"[1] \"sd(zz) =  3.02765035409749\"\n<rpy2.rinterface.SexpVector - Python:0x8e6df90 / R:0xec85f58>\n"}︡
+︡5cf5c9fc-d6fb-42fc-a907-9fbd554c4244︡{"stdout":"[1] \"sd(zz) =  3.02765035409749\"\n<rpy2.rinterface.SexpVector - Python:0x7f712f0e0de0 / R:0xc367758>\n"}︡
 ︠4057441f-b896-49c1-99eb-ae23a50032d4︠
-︡d3000352-0e75-452b-a467-38c164638e32︡{"html":"<h3>Custom Functions</h3>\n\n<p>The following unnamed function object is generated in R and its referenced passed back into Python and stored in the <code>myfunc</code> varianble.</p>\n"}︡
+︡4f4c945f-90b3-44ee-9a12-37f7f562db63︡
 ︠bc70060d-092f-4742-95f3-c3ae64527fdd︠
 myfunc = robjects.r("""\
 function(x) {
@@ -54,66 +55,67 @@ function(x) {
    k <- 2 * k + 1
    return(k)
 }""")
-︡05c57b8c-325e-4d66-ab2d-92b803cea21a︡
+︡59c1b254-cb01-45fc-9a28-1fa24d7d945e︡
 ︠668eb0b4-6b64-4522-91ea-42426e1a859b︠
 myfunc(2.)
-︡fa8e8f23-950e-41d0-9b83-676f9afe5b87︡{"stdout":"<FloatVector - Python:0x993d440 / R:0xca9e1a8>\n[7.645941]\n"}︡
+︡a59a44db-50ff-4af6-ad71-7544287c87ef︡{"stdout":"<FloatVector - Python:0xcb840e0 / R:0xc36a608>\n[9.414012]\n"}︡
 ︠a4d4c5cd-c609-4fc3-a7ef-93bb94939387i︠
 %md
 ### Vectorization
 First, enable automatic conversion from NumPy arrays to R arrays.
 Then, even the custom function works out of the box.
-︡6422aa24-bc36-4800-aefd-bde93cf83014︡{"html":"<h3>Vectorization</h3>\n\n<p>First, enable automatic conversion from NumPy arrays to R arrays.\nThen, even the custom function works out of the box.</p>\n"}︡
+︡2ff068cd-acd4-4aae-9d42-2d42842ff64a︡{"html":"<h3>Vectorization</h3>\n\n<p>First, enable automatic conversion from NumPy arrays to R arrays.\nThen, even the custom function works out of the box.</p>\n"}︡
 ︠f899be96-cbb3-468c-946a-af4b125ed1cd︠
 from rpy2.robjects.numpy2ri import numpy2ri
 robjects.conversion.py2ri = numpy2ri
-︡247821ed-ea98-4756-965d-161dff1b3aa3︡
+︡f401579f-d5da-4c09-b7b3-16f0ad1a21f5︡
 ︠c4a06e88-a79d-4713-a981-e14d50d8704b︠
 xx = np.array([5,4,2.2,-1,-5.5])
 print "Data Type:   ", type(xx)
 print "Element Type:", xx.dtype
 print "Array Shape: ", xx.shape
-︡7a946ba2-a71f-40d7-9838-5aad43634402︡{"stdout":"Data Type:    <type 'numpy.ndarray'>\n"}︡{"stdout":"Element Type: float64\n"}︡{"stdout":"Array Shape:  (5,)\n"}︡
+︡b744a090-56ba-4708-9e54-6a043720db93︡{"stdout":"Data Type:    <type 'numpy.ndarray'>\n"}︡{"stdout":"Element Type: float64\n"}︡{"stdout":"Array Shape:  (5,)\n"}︡
 ︠5260ca95-2c50-4572-acf9-726ccf08549b︠
 summary(xx)
-︡c597ee16-9813-44db-ab6c-e924eaa5071f︡{"stdout":"<FloatVector - Python:0xce8de18 / R:0xbdbc768>\n[-5.500000, -1.000000, 2.200000, 0.940000, 4.000000, 5.000000]\n"}︡
+︡0ca3d01b-65b7-4c19-be94-0e032c5d99ea︡{"stdout":"<FloatVector - Python:0xcb84cb0 / R:0xccc36e8>\n[-5.500000, -1.000000, 2.200000, 0.940000, 4.000000, 5.000000]\n"}︡
 ︠173bcae2-8d69-447f-b590-0fcaf954e08c︠
 myfunc(xx)
-︡7aa107de-761c-4ed3-a745-668a4fa9775b︡{"stdout":"<Array - Python:0xce8def0 / R:0xb88ada0>\n[53.485802, 35.485802, 13.165802, 5.485802, 63.985802]\n"}︡
+︡220a2b28-c2b4-4d77-b574-5d83ec761ddf︡{"stdout":"<Array - Python:0xcb844d0 / R:0xcce7470>\n[51.160216, 33.160216, 10.840216, 3.160216, 61.660216]\n"}︡
 ︠15e91fea-9588-4637-b429-a88b75970afd︠
 
+︡7d160ec6-32bd-49d2-8995-83ae27b8b917︡
 ︠040cbcd3-100d-4aaf-9fc9-92b3dff3200fi︠
 %md
 ### Types of Vectors
 ### `[ ]` and `[[  ]]` are `rx` and `rx2`
-︡f961e838-437f-4c93-9629-386a7f40cdee︡{"html":"<h3>Types of Vectors</h3>\n\n<h3><code>[ ]</code> and <code>[[  ]]</code> are <code>rx</code> and <code>rx2</code></h3>\n"}︡
+︡903aa975-c2c0-429b-b83f-528003c48909︡{"html":"<h3>Types of Vectors</h3>\n\n<h3><code>[ ]</code> and <code>[[  ]]</code> are <code>rx</code> and <code>rx2</code></h3>\n"}︡
 ︠147bd829-d78b-4ecb-9f3d-0a6c8a980f88︠
 # Python style: (10 exclusive)
 # v1 = robjects.IntVector(range(1,10))
 # R style: (10 inclusive)
 v1 = robjects.r.seq(1,10)
 print v1
-︡ec0898b3-25a5-456c-ae9e-1d8494f16f80︡{"stdout":" [1]  1  2  3  4  5  6  7  8  9 10\n\n"}︡
+︡c00d1291-9d36-47c6-bc69-0fdec728d4e3︡{"stdout":" [1]  1  2  3  4  5  6  7  8  9 10\n\n"}︡
 ︠eec9f3a7-f203-4891-869f-91f78414d76d︠
 # Python style, 0-based indexing of vectors
 print v1[0]
 v1[0] = -99
 print v1
-︡1b13c4c5-2bb5-4632-bfe3-961fe6eb099d︡{"stdout":"1\n"}︡{"stdout":" [1] -99   2   3   4   5   6   7   8   9  10\n\n"}︡
+︡993e7a9b-e7ef-4541-affb-20e03f848c76︡{"stdout":"1\n"}︡{"stdout":" [1] -99   2   3   4   5   6   7   8   9  10\n\n"}︡
 ︠0c3cec50-9aa9-4e40-8ea9-ea9725a65d7e︠
 # R style, 1-based indexing
 v1.rx[3] = 99
 print v1.rx(3)
 
-︡5ddb4fef-f2c2-4081-83a4-644668e12ae9︡{"stdout":"[1] 99\n\n"}︡
+︡698e4572-9905-4fb0-b8c1-59f4cb7aa26b︡{"stdout":"[1] 99\n\n"}︡
 ︠ace975cd-4964-4d26-88fb-2532e88d1784︠
 l1 = robjects.r("list(aa = c(1,2,3), bb = c(-5,5), cc = 'help')")
 print l1
-︡14448762-54e7-44c5-a5a8-791688308168︡{"stdout":"$aa\n[1] 1 2 3\n\n$bb\n[1] -5  5\n\n$cc\n[1] \"help\"\n\n\n"}︡
+︡78b7ce6f-4fe4-40e6-9d64-cb2ed8849481︡{"stdout":"$aa\n[1] 1 2 3\n\n$bb\n[1] -5  5\n\n$cc\n[1] \"help\"\n\n\n"}︡
 ︠e47cf3dc-037b-4b34-8fc4-c2e9a5c240cc︠
 # R's [[1]]
 print l1.rx2(1)
-︡f762c995-bef1-48d2-8f46-4e0695c2894b︡{"stdout":"[1] 1 2 3\n\n"}︡
+︡e2f5aef6-f570-4590-a3ae-ff1fab9ce09e︡{"stdout":"[1] 1 2 3\n\n"}︡
 ︠b95270c9-5ccf-420b-8f67-065b8afba88f︠
 # Constructing the same from Python is harder, since we need an ordered dictionary
 import rpy2.rlike.container as rlc
@@ -123,92 +125,105 @@ l2 = robjects.ListVector(
               ('bb', robjects.IntVector([-5,5])),
               ('cc', "help"))))
 print l2
-︡5d6b2890-1d7a-449f-924a-cd4474b6e010︡{"stdout":"$aa\n[1] 1 2 3\n\n$bb\n[1] -5  5\n\n$cc\n[1] \"help\"\n\n\n"}︡
+︡dc31a2c6-a068-49ec-9792-7c209effab16︡{"stdout":"$aa\n[1] 1 2 3\n\n$bb\n[1] -5  5\n\n$cc\n[1] \"help\"\n\n\n"}︡
 ︠34423b7d-e08a-4926-ab23-9ff3489367f9︠
 # assigning a new string vector to "bb"
 l1.rx2["bb"] = robjects.StrVector("this is a short sentence".split())
 print(l1[l1.names.index("bb")])
-︡e4fdd101-0ef2-46a4-b983-9015d1192f47︡{"stdout":"[1] \"this\"     \"is\"       \"a\"        \"short\"    \"sentence\"\n\n"}︡
+︡217e2f9e-4c80-4e19-9247-dcdcc7ed3602︡{"stdout":"[1] \"this\"     \"is\"       \"a\"        \"short\"    \"sentence\"\n\n"}︡
 ︠059cd82a-e06f-45cf-b0a1-2915fc4c7561︠
 # Matrix
+︡62f4c32b-bc09-494e-bfa1-ef29ee6ff23d︡
 ︠caa26080-2351-4bb2-897a-940d071da6b5︠
 m = robjects.r.matrix(range(10), nrow=5)
 print(m)
-︡0e7f97ce-dcd4-42d0-a160-b575a19dc25f︡{"stdout":"     [,1] [,2]\n[1,] 0    5   \n[2,] 1    6   \n[3,] 2    7   \n[4,] 3    8   \n[5,] 4    9   \n\n"}︡
+︡59ece7a5-c97b-4cbb-8da1-7084e705214d︡{"stdout":"     [,1] [,2]\n[1,] 0    5   \n[2,] 1    6   \n[3,] 2    7   \n[4,] 3    8   \n[5,] 4    9   \n\n"}︡
 ︠c38456a9-ca79-4eb4-a2aa-ee92c8d01d29︠
 m.rx2(4,2)
-︡33c23ac5-70db-411a-9bfb-710f3081a075︡{"stdout":"<IntVector - Python:0xd9365f0 / R:0xefe4bf8>\n[       8]\n"}︡
+︡3af47175-1551-489a-acc2-3a9c86969eca︡{"stdout":"<IntVector - Python:0xcb879e0 / R:0xc657388>\n[       8]\n"}︡
 ︠b32fe8d8-2858-4294-91af-79b35f64aee2︠
 # R-operators work, too
 print(m.ro > 5)
-︡8c14f48d-9d3d-4e43-8cdb-ad92e17c6842︡{"stdout":"      [,1]  [,2]\n[1,] FALSE FALSE\n[2,] FALSE  TRUE\n[3,] FALSE  TRUE\n[4,] FALSE  TRUE\n[5,] FALSE  TRUE\n\n"}︡
+︡dafb7c4c-d0ef-4e1d-a9f6-8119abd87ff2︡{"stdout":"      [,1]  [,2]\n[1,] FALSE FALSE\n[2,] FALSE  TRUE\n[3,] FALSE  TRUE\n[4,] FALSE  TRUE\n[5,] FALSE  TRUE\n\n"}︡
 ︠abae6f14-40ca-4f05-981d-e57612d7da93︠
 print m.rx((m.ro > 3).ro & (m.ro <= 6))
 
-︡65e18cf7-6e20-4441-97cd-80af76dc15fb︡{"stdout":"[[1]]\n[1] 4\n\n[[2]]\n[1] 5\n\n[[3]]\n[1] 6\n\n\n"}︡
+︡bd3d87a6-1a62-4758-b771-6510868e2b08︡{"stdout":"[[1]]\n[1] 4\n\n[[2]]\n[1] 5\n\n[[3]]\n[1] 6\n\n\n"}︡
 ︠57064f6d-44ac-4ade-97ef-081a26832c1ai︠
 %md
 ### Bonus: Factors
-︡e22474db-4bce-4fb2-906e-e300a5c5fab5︡{"html":"<h3>Bonus: Factors</h3>\n"}︡
+︡7a1b16fd-86c0-44ad-93cd-4f44e74e6e58︡{"html":"<h3>Bonus: Factors</h3>\n"}︡
 ︠a45684b3-6f03-4571-9529-65c5ce39ce24︠
 sv = robjects.StrVector('xyyyxyzyzyxx')
 fac = robjects.FactorVector(sv)
 print(fac)
-︡ae748769-bb53-4bdf-81d4-29a4f2a5a140︡{"stdout":" [1] x y y y x y z y z y x x\nLevels: x y z\n\n"}︡
+︡753b70b0-7130-4c9a-bded-0afb13c0c64d︡{"stdout":" [1] x y y y x y z y z y x x\nLevels: x y z\n\n"}︡
 ︠a77083a8-8fb4-4b80-9de0-785117661439︠
 print(summary(fac))
-︡cad8a349-6fc2-4207-b2b8-d89ba7907932︡{"stdout":"x y z \n4 6 2 \n\n"}︡
+︡cf09381f-7b63-4523-81d7-24074533196d︡{"stdout":"x y z \n4 6 2 \n\n"}︡
 ︠914d8922-a802-412d-a3ad-c544ad1903dci︠
 %md
 ### Packages
 The idea is to get hold of a reference to a package.
 The reference is like a module-namespace and populated with all the members.
-︡857fdb1a-4562-432d-857c-2dd778afc020︡{"html":"<h3>Packages</h3>\n\n<p>The idea is to get hold of a reference to a package.\nThe reference is like a module-namespace and populated with all the members.</p>\n"}︡
+︡b525a8f6-931c-4a7d-9882-57e27015c692︡{"html":"<h3>Packages</h3>\n\n<p>The idea is to get hold of a reference to a package.\nThe reference is like a module-namespace and populated with all the members.</p>\n"}︡
 ︠a18c1e66-7233-45c1-8483-754271f71f31︠
 from rpy2.robjects.packages import importr
 r_base = importr("base")
 print("a bit of the namespace:")
 print(dir(r_base)[-50:-40])
-︡473836a9-f735-432d-b75d-dcaa2b3b617d︡{"stdout":"a bit of the namespace:\n"}︡{"stdout":"['upper_tri', 'url', 'utf8ToInt', 'vapply', 'vector', 'version', 'warning', 'warnings', 'weekdays', 'weekdays_Date']\n"}︡
+︡f8b1c5cc-9134-456e-a9a0-900ab5f5faee︡{"stdout":"a bit of the namespace:\n"}︡{"stdout":"['upper_tri', 'url', 'utf8ToInt', 'vapply', 'vector', 'version', 'warning', 'warnings', 'weekdays', 'weekdays_Date']\n"}︡
 ︠029ee09a-8694-42bd-8fa7-2d67fca9ba75︠
 print(r_base.version)
-︡b67851c4-dbb9-43e4-8137-8225f516a1fe︡{"stdout":"               _                            \nplatform       x86_64-unknown-linux-gnu     \narch           x86_64                       \nos             linux-gnu                    \nsystem         x86_64, linux-gnu            \nstatus                                      \nmajor          2                            \nminor          15.2                         \nyear           2012                         \nmonth          10                           \nday            26                           \nsvn rev        61015                        \nlanguage       R                            \nversion.string R version 2.15.2 (2012-10-26)\nnickname       Trick or Treat               \n\n"}︡
+︡2a66644e-16d4-4f37-b7a4-f09e064b9f35︡{"stdout":"               _                            \nplatform       x86_64-unknown-linux-gnu     \narch           x86_64                       \nos             linux-gnu                    \nsystem         x86_64, linux-gnu            \nstatus                                      \nmajor          2                            \nminor          15.2                         \nyear           2012                         \nmonth          10                           \nday            26                           \nsvn rev        61015                        \nlanguage       R                            \nversion.string R version 2.15.2 (2012-10-26)\nnickname       Trick or Treat               \n\n"}︡
 ︠60345945-875a-454e-8952-a0f0df6272b0︠
 # use Python's `getattr` to access non-standard named identifyers.
 # e.g. matrix multiplication applied to two integers.
 getattr(r_base, "%*%")(65,9)
-︡6e34447d-7ba1-4a98-9e40-260bb88415ad︡{"stdout":"<Matrix - Python:0xd915758 / R:0xed57fe8>\n[585.000000]\n"}︡
+︡17e001b8-0072-467a-837a-8da7d5000401︡{"stdout":"<Matrix - Python:0xd0158c0 / R:0xcd55ed8>\n[585.000000]\n"}︡
 ︠ddf7c8a4-ad4d-4c0a-9a04-b08cafc324a9︠
 
+︡8110be28-3055-4e11-a105-ebc18988d4e0︡
 ︠1dbf1da9-2c8d-497d-9b16-1721438f1118︠
 r_base.rep(r_base.c("x", "y", "z"), 10)
-︡fb19afa5-a3db-4894-a996-b65bb8f5a68f︡{"stdout":"<StrVector - Python:0xdff1908 / R:0xfc7a170>\n['x', 'y', 'z', ..., 'x', 'y', 'z']\n"}︡
+︡441d4362-a221-43a7-b533-e4eac92b6dbd︡{"stdout":"<StrVector - Python:0xd015a70 / R:0xcf2e0b0>\n['x', 'y', 'z', ..., 'x', 'y', 'z']\n"}︡
 ︠3da353d4-4bd4-413f-bea1-8d585f6d1725︠
-︡470b543d-4e73-414f-aae8-f2be5fe19620︡
+︡73357c15-3a90-4122-97fa-cb1cad1e0146︡
 ︠440dc108-dfa3-4279-83c8-352845d54ebc︠
 r_stats = importr("stats")
+︡71ab8603-c7be-4ea9-bf86-ddec1fe4464a︡
+︠380c0cee-b403-49b7-ae25-2348eba51f71︠
+
+︠5591a3dd-a31e-4b68-b41f-12b19595b549︠
+
+︠0d5766e0-12c8-4c2d-a646-398a8147c804︠
+
 ︠905e1b00-c8bd-404e-9df3-72e6cdc4a512︠
 # datasets
 datasets = importr('datasets')
 faithful = datasets.__rdata__.fetch("faithful")["faithful"]
 print type(faithful)
-︡7ccf9bde-9989-48ea-b717-35ddab063652︡{"stdout":"<class 'rpy2.robjects.vectors.DataFrame'>\n"}︡
+︡ce4e3a68-7ded-47b4-ad91-6448cd0ef651︡{"stdout":"<class 'rpy2.robjects.vectors.DataFrame'>\n"}︡
 ︠6dc17296-b581-4a6c-aa31-34237e79d88d︠
 # number of columns!
 len(faithful)
-︡ea5ea548-1245-4bba-b0fd-f36fead3886b︡{"stdout":"2\n"}︡
+︡ed073903-bf3d-423c-a42c-331565617afc︡{"stdout":"2\n"}︡
 ︠cc50e34b-1dd8-4243-b7af-01ac7bf0b5d0︠
 # datatypes in R for each column
 [column.rclass[0] for column in faithful]
-︡5ae4a1f9-f098-405c-a82b-4b4ac5f4b3de︡{"stdout":"['numeric', 'numeric']\n"}︡
+︡33f70cd5-a593-443d-a568-fd3f626ef255︡{"stdout":"['numeric', 'numeric']\n"}︡
 ︠552ce8f0-2ffe-41e3-a283-6cdfc41d97d5︠
 # extract some rows
 print(faithful.rx(robjects.IntVector([2,3,4,10]), True))
-︡25fc3dc0-796b-401f-9000-cf03b8d944e5︡{"stdout":"   eruptions waiting\n2      1.800      54\n3      3.333      74\n4      2.283      62\n10     4.350      85\n\n"}︡
+︡53ecc233-1064-4703-8646-3e66530458aa︡{"stdout":"   eruptions waiting\n2      1.800      54\n3      3.333      74\n4      2.283      62\n10     4.350      85\n\n"}︡
 ︠8605de22-3ba6-467f-a5d8-4dddee8910ea︠
 # extract part of a column
 print(faithful.rx2("eruptions")[:10])
-︡f361c185-10cd-4a01-b182-616184ce0fcb︡{"stdout":" [1] 3.600 1.800 3.333 2.283 4.533 2.883 4.700 3.600 1.950 4.350\n\n"}︡
+︡b0d2ed65-e847-4771-92f6-c1104072843a︡{"stdout":" [1] 3.600 1.800 3.333 2.283 4.533 2.883 4.700 3.600 1.950 4.350\n\n"}︡
+︠816aaeaf-3b20-46a9-bb0c-1e745de14650︠
+
+︠f7c03b20-ebb6-4368-abc5-8b96d9c7c3e1︠
+
 ︠cc19b123-5e29-4c0f-ad98-61c6359cc3b9︠
 
 ︠bf24cb62-c1b6-4fcc-b920-327abd230720i︠
@@ -220,13 +235,13 @@ data = robjects.DataFrame({
        'y' : np.array([4, 5, 5.5, 7, 7.6, 8, 11, 12, 13]),
        'x' : np.array([1, 2,   3, 4, 4.4, 5, 7,  8, 8.5])
        })
-︡61295947-6696-4c1b-a00a-38a09e208610︡
+︡33b20016-abf4-45ed-b5a6-4b65e3339e6c︡
 ︠0bb9dbd0-bde4-448a-b461-e4a4f3669f85︠
 lmod = robjects.r.lm("y ~ x", data = data)
-︡f212db05-17b3-421d-9f44-5437ba444e14︡
+︡a7e851bd-25fb-4528-98eb-49e112011999︡
 ︠aa5ef93b-b8d6-4b17-bca4-77df4598aaa7︠
 print lmod.names
-︡05d9ff62-0a34-46e2-8eeb-b46a3961f3ef︡{"stdout":" [1] \"coefficients\"  \"residuals\"     \"effects\"       \"rank\"         \n [5] \"fitted.values\" \"assign\"        \"qr\"            \"df.residual\"  \n [9] \"xlevels\"       \"call\"          \"terms\"         \"model\"        \n\n"}︡
+︡95c208c6-b910-4329-a1c7-f448a05548c1︡{"stdout":" [1] \"coefficients\"  \"residuals\"     \"effects\"       \"rank\"         \n [5] \"fitted.values\" \"assign\"        \"qr\"            \"df.residual\"  \n [9] \"xlevels\"       \"call\"          \"terms\"         \"model\"        \n\n"}︡
 ︠31a546ad-4be7-41cc-a53b-1d3dc93f9a09︠
 coeffs = lmod.rx2("coefficients")
 print "R's representation via 'print'"
@@ -234,28 +249,28 @@ print(coeffs)
 print
 print "Same coefficients in Python's floats:"
 print ([x for x in coeffs])
-︡b322dfef-8b28-459f-81c0-05056d7973db︡{"stdout":"R's representation via 'print'\n"}︡{"stdout":"(Intercept)           x \n   2.328485    1.215469 \n\n"}︡{"stdout":"\n"}︡{"stdout":"Same coefficients in Python's floats:\n"}︡{"stdout":"[2.328485324947587, 1.2154692791485247]\n"}︡
+︡f34c7456-d198-486d-9e56-8409393eed3b︡{"stdout":"R's representation via 'print'\n"}︡{"stdout":"(Intercept)           x \n   2.328485    1.215469 \n\n"}︡{"stdout":"\n"}︡{"stdout":"Same coefficients in Python's floats:\n"}︡{"stdout":"[2.328485324947587, 1.2154692791485247]\n"}︡
 ︠6137da7a-683b-49ef-94f8-f8e5580ef91e︠
 # max is from Python, iterates naturally over the entries in all residuals
 print max(lmod.rx2("residuals"))
 
-︡95896fce-54d3-4bcb-9b8d-b8fd383878bc︡{"stdout":"0.456045395904\n"}︡
+︡37dbe7e8-c3f9-481a-b09e-ed9acc5e16e8︡{"stdout":"0.456045395904\n"}︡
 ︠8e2f0f08-172c-4aed-985b-49eeef268e32i︠
 %md
 ### Plot
-︡765aad12-2bf7-4b3c-9760-eed512ee04fc︡{"html":"<h3>Plot</h3>\n"}︡
+︡856a0bb5-d7bc-4680-b788-f7cc2e046816︡{"html":"<h3>Plot</h3>\n"}︡
 ︠306277e0-2893-456d-982c-b6befa27356f︠
 from rpy2.robjects.packages import importr
 grdevices = importr('grDevices')
-︡9383a0c9-8fca-436d-85ab-f30202cdcb15︡
+︡fbbca808-7d7c-4f7c-bbff-ac09b1fb6053︡
 ︠803df10d-4d5c-48ab-b5a8-dcae626705a0︠
 # just calling "plot" on the dataframe
-︡9f242b31-733f-4546-8ee1-5bc0e1e4da98︡
+︡bd16efc1-f82b-44db-b8a3-4c5ccc555207︡
 ︠2158b6a8-07d6-4875-85ef-2cbbda125559︠
 _ = grdevices.png(file="rpy2_plot.png", width=640, height=320)
 _ = robjects.r.plot(data)
 grdevices.dev_off()
-︡3d8e84b3-f3e0-4331-8bcb-87d506988f01︡{"stdout":"<IntVector - Python:0xeb4aea8 / R:0x114d0488>\n[       2]\n"}︡
+︡96235ec3-9224-4f40-94e4-b0ffd3856876︡{"stdout":"<IntVector - Python:0xe2f9908 / R:0xe3c7a68>\n[       1]\n"}︡
 ︠d456b05e-1f32-478e-9f00-1f9ccc13163d︠
 salvus.file("rpy2_plot.png")
 ︡ca08b67e-8068-41cc-8a10-1bbf1a5469a1︡{"once":false,"file":{"show":true,"uuid":"c9ae0343-c983-49f3-9018-f8c0b053c189","filename":"rpy2_plot.png"}}︡
@@ -263,13 +278,14 @@ salvus.file("rpy2_plot.png")
 # Plot of the linear model lmod
 ︡9e33cb7c-6553-492f-8448-e29a939f0f94︡
 ︠91a26196-5439-4a7e-9d38-83c4834da04a︠
-_ = grdevices.png(file="rpy2_plot_2.png", width=640, height=320)
+_ = grdevices.png(file="rpy2_plot_2.png", width=640, height=520)
+_ = robjects.reval("par(mfrow=c(2,2))")
 _ = robjects.r.plot(lmod)
 grdevices.dev_off()
-︡5ec017d1-944a-48ce-94ba-08ff8647f571︡{"stdout":"<IntVector - Python:0xeb2e8c0 / R:0xf87c808>\n[       2]\n"}︡
+︡1c6943cc-2475-4ddb-b40e-ee5a98512058︡{"stdout":"<IntVector - Python:0xe2e6320 / R:0xd9015f8>\n[       2]\n"}︡
 ︠2ca81aa8-a93b-47e4-b479-45a44dde46d7︠
 salvus.file("rpy2_plot_2.png")
-︡a1e19d93-101a-4fa0-8212-dfa76b15ae37︡{"once":false,"file":{"show":true,"uuid":"f7d91100-bb88-4532-8085-6d744c312c07","filename":"rpy2_plot_2.png"}}︡
+︡0c424ed6-c476-4801-aca4-7699d1a35a47︡{"once":false,"file":{"show":true,"uuid":"1072bec5-2c10-4172-bc10-7299c3bc138c","filename":"rpy2_plot_2.png"}}︡
 ︠b65b1434-1389-4443-8ad9-7cd993074e50︠
 # plot of the volcano data, via the "print" identifyer in R
 ︡eee9e554-d195-4b4d-b78d-aa5877af384d︡
