@@ -12,8 +12,8 @@
 % Described in the PracTeX Journal, 2010, No. 2
 %
 % Modified for a talk about RPy2 and IPython's Rmagic extension
-% by Harald Schilly (harald.schilly@univie.ac.at)
-% at 2013-12-03
+% It's also a demo about SMC's capabilities to write a presentation.
+% Written by Harald Schilly (harald.schilly@univie.ac.at), 2013-12-03
 %
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
@@ -85,8 +85,15 @@ footskip=8.5mm
 \usepackage{tocstyle} % Required for customizing the table of contents
 \usepackage{ulem}
 \usepackage{verbatim}
-\usepackage[colorlinks=false]{hyperref}
+\usepackage[]{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = myblue, %Colour for external hyperlinks
+  linkcolor    = myblue, %Colour of internal links
+  citecolor   = myblue %Colour of citations
+}
 \usepackage{listings}
+\usepackage{wasysym} % for emoticons
 %------------------------------------------------
 
 %------------------------------------------------
@@ -188,7 +195,7 @@ footskip=8.5mm
 \newcommand*{\mydate}{2013-12-03} % Presentation date
 \newcommand*{\myuni}{University of Vienna
 \raisebox{0.2mm}{$\bm{\vert}$}\
-$\text{Vienna} \leftarrow \text{R}$ Meetup} % University or department
+$\text{Vienna} \leftarrow \text{R Meetup}$} % University or department
 
 %----------------------------------------------------------------------------------------
 
@@ -205,7 +212,7 @@ $\text{Vienna} \leftarrow \text{R}$ Meetup} % University or department
 \end{tikzpicture}
 % Text within the box
 \begin{flushright}
-\vspace{0.6cm}
+\vspace{0.65cm}
 \color{white}\sffamily
 {\bfseries\Large\mytitle\par} % Title
 \vspace{0.4cm}
@@ -235,18 +242,19 @@ $\text{Vienna} \leftarrow \text{R}$ Meetup} % University or department
 \newhead{Motivation}
 \section{R vs. Python}
 
-\textbf{R} is a \uline{vertically specialized} environment for statistics.
+\href{http://www.r-project.org}{\textbf{R}}
+is a \uline{vertically specialized} environment for statistics.
 It is based on the domain specific \textbf{S} language (mid 70-ties),
 has a lot of packages for statistics and supporting functionalities.
 
-\textbf{Python} is a general purpose language,
+\href{http://www.python.org}{\textbf{Python}} is a general purpose language,
 designed for beginners (clear syntax, easy to start),
 very popular (Class A, Tiboe Index),
 excellent support for extensions and
 also generally accepted in engineering and scientific areas.
 
 Remarkably, the latest incarnation of S
-(``\texttt{\~}'' formulas and \texttt{data.frame})
+(``\texttt{\~}''--formulas and \texttt{data.frame})
 and the first version of Python appeared both in 1991.
 
 \clearpage
@@ -256,15 +264,17 @@ and the first version of Python appeared both in 1991.
 \newhead{Common Ground}
 \subsection{Common Ground}
 
-R is primarily a command-line interpreter,
-and manages it's own ``world'' of objects.
+R is primarily an REPL command-line interpreter,
+which can also run scripts.
+It manages its own ``world'' of objects.
 
 In order to interface with R:
 \begin{itemize}
-\item{data-structures:} need to be passed around
-\item{functions:} need to be called ``inside'' R from the outside
-\item{plots:} are created in R and need to be made available
-\item{speed\&reliability:} it should be done fast and without too many errors
+\item{data-structures:} need to be passed in and out.
+\item{functions:} need to be called from the ``outside''
+in order to change R's internal state on the ``inside''.
+\item{plots:} are created in R and need to be made available.
+\item{speed\&reliability:} everything should happen fast and reliably.
 \end{itemize}
 
 
@@ -278,27 +288,28 @@ There is one famous Python library to accomplish this:
 It is a Python module and it is compiled against R's C Code.
 That makes it a robust low-level interface.
 
-R's environment for variables, the functions, operators,
-libraries and other elements are
+R's environment for variable states, the functions, operators,
+libraries/packages, and other elements are
 \uline{exposed as Python objects}.
 
-Exchanging data from and to R from Python is based on
-converting basic data types,
-most notably
+Exchanging data from and to R is based on
+converting basic data types, ordered lists, strings,
+and most notably
 \href{http://wiki.scipy.org/Tentative_NumPy_Tutorial}{\uline{NumPy Arrays}}.
-R's internal state is manipulated via function/method calls.
 
 \clearpage
 \newhead{RPy2: Example}
-\subsection{RPy2: Example}
 
-\begin{lstlisting}[language=Python]
-# evaluate code
->>> summary = rpy2.robjects.r("...")
+\begin{lstlisting}[language=python]
+# evaluate arbitrary code
+>>> summary = rpy2.robjects.r("...") # .reval(...)
+
 # a function reference
 >>> summary = rpy2.robjects.r['summary']
+
 # calling `seq` directly
 >>> rpy2.robjects.r.seq(1,10)
+
 # after activating NumPy Array conversion:
 >>> xx = np.array([5,4,2.2,-1,-5.5])
 >>> summary(xx)
@@ -355,6 +366,15 @@ gives
 \newhead{Sagemath Cloud}
 \section{Sagemath Cloud}
 
+\href{https://cloud.sagemath.org}{The Sagemath Cloud} is a web-based online
+environment for all sorts of computations.
+It's not only running
+\href{http://www.sagemath.org}{the Sage mathematical software system},
+but also R, LaTeX, IPython and much more.
+Just open a Linux terminal and explore its capabilities \smiley
+
+This talk and the examples are part of the
+\href{https://github.com/sagemath/cloud-examples}{Sagemath Cloud examples repository}.
 
 \clearpage
 \newhead{Links}
