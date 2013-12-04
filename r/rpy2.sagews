@@ -14,40 +14,40 @@ import rpy2
 import rpy2.robjects as robjects
 from rpy2.robjects.packages import importr
 rpy2.__version__
-︡41331b4e-76b3-45e6-bb9c-dc98ddbd9449︡{"auto":true}︡{"stdout":"'2.3.8'\n"}︡
+︡c90c864e-fcc5-4b30-8ccb-a67551ad01c6︡{"auto":true}︡{"stdout":"'2.3.8'\n"}︡
 ︠a3bb2d3d-b5f3-42b6-a94c-0add5b823b54i︠
 %md
 ### Referencing R functions
 RPy2's `robjects` (or sometimes just imported as `ro`) exposes the R instance as `.r`.
 It is rather easy to get hold of functions and reference them from Python:
-︡c497a0af-da87-4be4-aea6-48a297c71f6c︡{"html":"<h3>Referencing R functions</h3>\n\n<p>RPy2&#8217;s <code>robjects</code> (or sometimes just imported as <code>ro</code>) exposes the R instance as <code>.r</code>.\nIt is rather easy to get hold of functions and reference them from Python:</p>\n"}︡
+︡913ef0e0-7aba-47d0-8dc0-767f3ad0fa85︡{"html":"<h3>Referencing R functions</h3>\n\n<p>RPy2&#8217;s <code>robjects</code> (or sometimes just imported as <code>ro</code>) exposes the R instance as <code>.r</code>.\nIt is rather easy to get hold of functions and reference them from Python:</p>\n"}︡
 ︠08150b38-b19e-4975-b9e4-470916ea8f28︠
 c = robjects.r['c']
 summary = robjects.r['summary']
-︡dec58b36-e9e4-47a8-8a55-9e157ccb7a37︡
+︡f9d974dd-f228-4492-94ad-1a138d352ff5︡
 ︠753c2844-6bd8-4199-bdbd-41aba057798c︠
 v1 = c(5,4.4,1,-1.8)
 sumv1 = summary(v1)
 print sumv1.__repr__()
-︡7cad0244-0333-4d70-a38c-1e96eedba575︡{"stdout":"<FloatVector - Python:0xb2427e8 / R:0xb3d6130>\n[-1.800000, 0.300000, 2.700000, 2.150000, 4.550000, 5.000000]\n"}︡
+︡6fd98103-f623-4504-8366-6d53aeb7f218︡{"stdout":"<FloatVector - Python:0x92155f0 / R:0xcc41fa0>\n[-1.800000, 0.300000, 2.700000, 2.150000, 4.550000, 5.000000]\n"}︡
 ︠2a554e52-b207-4eb2-a6ad-0ce14f5d0adc︠
 print sumv1
-︡e6e45cc3-aa75-414a-94e8-044dc1f52e34︡{"stdout":"   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  -1.80    0.30    2.70    2.15    4.55    5.00 \n\n"}︡
+︡718a442a-b0e3-4018-83d8-5126079b5787︡{"stdout":"   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  -1.80    0.30    2.70    2.15    4.55    5.00 \n\n"}︡
 ︠c1883ade-70ce-4b99-aa5e-adba5a2d84fa︠
 sumv1[3]
-︡a0091fdd-f339-4bc4-be13-c45af407434a︡{"stdout":"2.15\n"}︡
+︡79366639-f5ce-4b81-8cb2-a319fda91a23︡{"stdout":"2.15\n"}︡
 ︠ba9d8e2e-283f-456b-8c66-24242ea614e5i︠
 %md
 ### Evaluating R code directly
-︡6d921375-0dc9-49ac-aa94-504ebb94210b︡{"html":"<h3>Evaluating R code directly</h3>\n"}︡
+︡58e56e03-d1c1-404f-bfbf-e25ec0a99970︡{"html":"<h3>Evaluating R code directly</h3>\n"}︡
 ︠65244f5f-3779-42b3-a734-24c7ae2a5a96︠
 robjects.reval("""\
 zz <- 1:10
 print(paste("sd(zz) = ", sd(zz)))
 """)
-︡06c07251-6664-471d-b4a4-d66cd8ffec75︡{"stdout":"[1] \"sd(zz) =  3.02765035409749\"\n<rpy2.rinterface.SexpVector - Python:0x50647e0 / R:0xa8a6558>\n"}︡
+︡5268d9d6-e221-4a4b-9ec5-ede7b50ed9f3︡{"stdout":"[1] \"sd(zz) =  3.02765035409749\"\n<rpy2.rinterface.SexpVector - Python:0x68177f8 / R:0xc1150e8>\n"}︡
 ︠4057441f-b896-49c1-99eb-ae23a50032d4︠
-︡4eb4c1ca-29de-40ac-a86b-b6c0e3032f96︡
+︡ab877a2a-b4a2-4bf7-a390-6e9b63a909ac︡
 ︠bc70060d-092f-4742-95f3-c3ae64527fdd︠
 myfunc = robjects.r("""\
 function(x) {
@@ -55,67 +55,78 @@ function(x) {
    k <- 2 * a + 1
    return(k)
 }""")
-︡8cdb419b-0c73-4488-8a88-3f018a1768e7︡
+︡4a766bcf-9c05-4fdb-a696-e353fde786c5︡
 ︠668eb0b4-6b64-4522-91ea-42426e1a859b︠
-myfunc(2.)
-︡8deed24a-50b1-48ee-b877-5924138b9eef︡{"stdout":"<FloatVector - Python:0x8018758 / R:0xa859be8>\n[10.286342]\n"}︡
+myfunc(2.5)
+︡c496214f-ec48-4fde-a19f-390d14826703︡{"stdout":"<FloatVector - Python:0xcc7f3b0 / R:0xc0c8778>\n[15.198918]\n"}︡
 ︠a4d4c5cd-c609-4fc3-a7ef-93bb94939387i︠
 %md
 ### Vectorization
 First, enable automatic conversion from NumPy arrays to R arrays.
 Then, even the custom function works out of the box.
-︡56eeed74-dea9-45fb-a5cc-96a0a4a5a626︡{"html":"<h3>Vectorization</h3>\n\n<p>First, enable automatic conversion from NumPy arrays to R arrays.\nThen, even the custom function works out of the box.</p>\n"}︡
+︡a8bf98ee-4cd1-4b16-9378-658413d798dd︡{"html":"<h3>Vectorization</h3>\n\n<p>First, enable automatic conversion from NumPy arrays to R arrays.\nThen, even the custom function works out of the box.</p>\n"}︡
 ︠f899be96-cbb3-468c-946a-af4b125ed1cd︠
 from rpy2.robjects.numpy2ri import numpy2ri
 robjects.conversion.py2ri = numpy2ri
-︡f4d7a4e3-9235-4d4e-88c0-9ccf47dbfe9b︡
+︡e5056e08-8c61-4ab9-b1e5-48fa71d998b4︡
 ︠c4a06e88-a79d-4713-a981-e14d50d8704b︠
 xx = np.array([5,4,2.2,-1,-5.5])
 print "Data Type:   ", type(xx)
 print "Element Type:", xx.dtype
 print "Array Shape: ", xx.shape
-︡62181e36-0c92-48ea-8e75-dc6c2e36bd5f︡{"stdout":"Data Type:    <type 'numpy.ndarray'>\n"}︡{"stdout":"Element Type: float64\n"}︡{"stdout":"Array Shape:  (5,)\n"}︡
+︡84f05ad0-a8fa-4c89-b3b9-6b5c5fd3fe93︡{"stdout":"Data Type:    <type 'numpy.ndarray'>\n"}︡{"stdout":"Element Type: float64\n"}︡{"stdout":"Array Shape:  (5,)\n"}︡
 ︠5260ca95-2c50-4572-acf9-726ccf08549b︠
 summary(xx)
-︡96a7ddaf-be2c-462a-9593-822a17c04d55︡{"stdout":"<FloatVector - Python:0xb457098 / R:0x9e9b150>\n[-5.500000, -1.000000, 2.200000, 0.940000, 4.000000, 5.000000]\n"}︡
+︡db5de027-7b5e-42eb-9348-11419d9d50f0︡{"stdout":"<FloatVector - Python:0xcc9b9e0 / R:0xbd2cae0>\n[-5.500000, -1.000000, 2.200000, 0.940000, 4.000000, 5.000000]\n"}︡
 ︠173bcae2-8d69-447f-b590-0fcaf954e08c︠
 myfunc(xx)
-︡c5ecf35c-b5d7-42aa-a6b3-9c058822a179︡{"stdout":"<Array - Python:0xb457488 / R:0x9f8cdf0>\n[55.120545, 37.120545, 14.800545, 7.120545, 65.620545]\n"}︡
+︡3dd4315f-2eb4-4221-98b5-cc2e802eba26︡{"stdout":"<Array - Python:0xcc9b758 / R:0xb7fb220>\n[50.887895, 32.887895, 10.567895, 2.887895, 61.387895]\n"}︡
 ︠15e91fea-9588-4637-b429-a88b75970afd︠
 
-︡58333a73-40e8-4f51-ae09-9ca79f50209b︡
+︡9c2332b7-2b02-45cc-8eb5-543ebb9d692c︡
 ︠040cbcd3-100d-4aaf-9fc9-92b3dff3200fi︠
 %md
 ### Types of Vectors
 ### `[ ]` and `[[  ]]` are `rx` and `rx2`
-︡da2529a0-82c9-4fea-9b04-10c0473b01b4︡{"html":"<h3>Types of Vectors</h3>\n\n<h3><code>[ ]</code> and <code>[[  ]]</code> are <code>rx</code> and <code>rx2</code></h3>\n"}︡
+︡c1f25193-6090-40bd-b4b9-20aa76ee4ef8︡{"html":"<h3>Types of Vectors</h3>\n\n<h3><code>[ ]</code> and <code>[[  ]]</code> are <code>rx</code> and <code>rx2</code></h3>\n"}︡
 ︠147bd829-d78b-4ecb-9f3d-0a6c8a980f88︠
 # Python style: (10 exclusive)
 # v1 = robjects.IntVector(range(1,10))
 # R style: (10 inclusive)
 v1 = robjects.r.seq(1,10)
 print v1
-︡9a2b167a-8429-4912-b163-19339bb00c15︡{"stdout":" [1]  1  2  3  4  5  6  7  8  9 10\n\n"}︡
+︡0fe402a4-6794-4b0e-92c6-67e39962cfcd︡{"stdout":" [1]  1  2  3  4  5  6  7  8  9 10\n\n"}︡
 ︠eec9f3a7-f203-4891-869f-91f78414d76d︠
 # Python style, 0-based indexing of vectors
 print v1[0]
 v1[0] = -99
 print v1
-︡186992b4-8ebb-456c-9ab6-4e6160ffc3ef︡{"stdout":"1\n"}︡{"stdout":" [1] -99   2   3   4   5   6   7   8   9  10\n\n"}︡
+︡1ccdadd2-09c4-4248-ba97-b36ee327c01b︡{"stdout":"1\n"}︡{"stdout":" [1] -99   2   3   4   5   6   7   8   9  10\n\n"}︡
 ︠0c3cec50-9aa9-4e40-8ea9-ea9725a65d7e︠
 # R style, 1-based indexing
 v1.rx[3] = 99
 print v1.rx(3)
 
-︡8ee4e0d0-ce6d-4477-a8b9-54eeb18d32a2︡{"stdout":"[1] 99\n\n"}︡
+︡5328d4ed-9e26-49cb-8516-cd09aafe0154︡{"stdout":"[1] 99\n\n"}︡
+︠c503120f-0a11-441b-b2a6-9a6227c57994︠
+print v1
+︡3e88e8fe-dc80-4a88-8b5a-0fba15f6e619︡{"stdout":" [1] -99   2  99   4   5   6   7   8   9  10\n\n"}︡
 ︠ace975cd-4964-4d26-88fb-2532e88d1784︠
 l1 = robjects.r("list(aa = c(1,2,3), bb = c(-5,5), cc = 'help')")
 print l1
-︡258e137f-eafe-44bb-b254-57e8ccf6f1af︡{"stdout":"$aa\n[1] 1 2 3\n\n$bb\n[1] -5  5\n\n$cc\n[1] \"help\"\n\n\n"}︡
+︡7cae42f8-84e9-4652-9e5a-b80718984ece︡{"stdout":"$aa\n[1] 1 2 3\n\n$bb\n[1] -5  5\n\n$cc\n[1] \"help\"\n\n\n"}︡
 ︠e47cf3dc-037b-4b34-8fc4-c2e9a5c240cc︠
 # R's [[1]]
 print l1.rx2(1)
-︡e218fce0-75bc-41a5-9221-4a1cc143a0ed︡{"stdout":"[1] 1 2 3\n\n"}︡
+︡1cea2509-eaad-4739-8209-ed14581fa1a1︡{"stdout":"[1] 1 2 3\n\n"}︡
+︠351f9c74-2ea3-4a59-b6d3-dbd3b5c623c6︠
+# indexing into the element [[1]]
+print l1.rx2(1).rx(2)
+︡3d1d845a-91df-410b-b81a-6ea19a381c6e︡{"stdout":"[1] 2\n\n"}︡
+︠eb8dcbb6-b6fb-47b1-ab64-7ca701da89bf︠
+# versus
+print l1.rx2(1)[1]
+︡ef79a856-5906-4c06-a192-998aac6472f2︡{"stdout":"2.0\n"}︡
 ︠b95270c9-5ccf-420b-8f67-065b8afba88f︠
 # Constructing the same from Python is harder, since we need an ordered dictionary
 import rpy2.rlike.container as rlc
@@ -125,33 +136,34 @@ l2 = robjects.ListVector(
               ('bb', robjects.IntVector([-5,5])),
               ('cc', "help"))))
 print l2
-︡7d0deb82-757c-4e7e-9d02-9f1dab79a090︡{"stdout":"$aa\n[1] 1 2 3\n\n$bb\n[1] -5  5\n\n$cc\n[1] \"help\"\n\n\n"}︡
+︡6e1c7066-d487-48b4-b01a-89e8217e80ef︡{"stdout":"$aa\n[1] 1 2 3\n\n$bb\n[1] -5  5\n\n$cc\n[1] \"help\"\n\n\n"}︡
 ︠34423b7d-e08a-4926-ab23-9ff3489367f9︠
 # assigning a new string vector to "bb"
 l1.rx2["bb"] = robjects.StrVector("this is a short sentence".split())
 print(l1[l1.names.index("bb")])
-︡3eddbd38-a1e9-4fb5-a921-950f12dbb123︡{"stdout":"[1] \"this\"     \"is\"       \"a\"        \"short\"    \"sentence\"\n\n"}︡
+︡0c113fbe-8d07-4a29-b861-0fb3063b5fb4︡{"stdout":"[1] \"this\"     \"is\"       \"a\"        \"short\"    \"sentence\"\n\n"}︡
 ︠059cd82a-e06f-45cf-b0a1-2915fc4c7561︠
 # Matrix
-︡78a4c03c-d4ad-4105-b206-f28a7e0d9771︡
+︡cacb5111-bdb1-424e-a0cf-dc64013cf46e︡
 ︠caa26080-2351-4bb2-897a-940d071da6b5︠
 m = robjects.r.matrix(range(10), nrow=5)
 print(m)
-︡5d178aaf-8bca-426c-9e27-7f8195302d7f︡{"stdout":"     [,1] [,2]\n[1,] 0    5   \n[2,] 1    6   \n[3,] 2    7   \n[4,] 3    8   \n[5,] 4    9   \n\n"}︡
+︡14033b63-9d4f-4c84-93fc-b093cd6927d2︡{"stdout":"     [,1] [,2]\n[1,] 0    5   \n[2,] 1    6   \n[3,] 2    7   \n[4,] 3    8   \n[5,] 4    9   \n\n"}︡
+︠a3fb456d-cea3-4c96-81a2-2e87fb52a72c︠
+type(m)
+︡e7f4b9ed-1c55-47c8-89e9-54b867106a43︡{"stdout":"<class 'rpy2.robjects.vectors.Matrix'>\n"}︡
 ︠c38456a9-ca79-4eb4-a2aa-ee92c8d01d29︠
 m.rx2(4,2)
-︡f2db4aa9-43a2-40ef-81df-1a51c100510a︡{"stdout":"<IntVector - Python:0x8f88908 / R:0xb7bac58>\n[       8]\n"}︡
+︡f405d75c-0603-4d7e-8047-832866b63e78︡{"stdout":"<IntVector - Python:0xccaa560 / R:0xbfdf248>\n[       8]\n"}︡
 ︠b32fe8d8-2858-4294-91af-79b35f64aee2︠
 # R-operators work, too
 print(m.ro > 5)
-︡d05c7174-ddfd-4400-a3c8-e4f957a3934b︡{"stdout":"      [,1]  [,2]\n[1,] FALSE FALSE\n[2,] FALSE  TRUE\n[3,] FALSE  TRUE\n[4,] FALSE  TRUE\n[5,] FALSE  TRUE\n\n"}︡
+︡2e0ae91d-b9e4-4f86-a751-a970c5e3b3ad︡{"stdout":"      [,1]  [,2]\n[1,] FALSE FALSE\n[2,] FALSE  TRUE\n[3,] FALSE  TRUE\n[4,] FALSE  TRUE\n[5,] FALSE  TRUE\n\n"}︡
 ︠abae6f14-40ca-4f05-981d-e57612d7da93︠
 print m.rx((m.ro > 3).ro & (m.ro <= 6))
 
-︡79939bc0-faa4-4b0b-8bcb-f29b679a6f20︡{"stdout":"[[1]]\n[1] 4\n\n[[2]]\n[1] 5\n\n[[3]]\n[1] 6\n\n\n"}︡
-︠57064f6d-44ac-4ade-97ef-081a26832c1ai︠
-%md
-### Bonus: Factors
+︡4f6cd9dd-9c3c-462b-9672-2e425a09a3b2︡{"stdout":"[[1]]\n[1] 4\n\n[[2]]\n[1] 5\n\n[[3]]\n[1] 6\n\n\n"}︡
+︠f1795e05-8a39-4b15-800a-8dba13fbeac2︠
 ︡799e57bc-4522-4732-885f-0a71efd045f7︡{"html":"<h3>Bonus: Factors</h3>\n"}︡
 ︠a45684b3-6f03-4571-9529-65c5ce39ce24︠
 sv = robjects.StrVector('xyyyxyzyzyxx')
@@ -162,8 +174,6 @@ print(fac)
 print(summary(fac))
 ︡2dda74ff-9b22-4b29-acef-65ff64f439c7︡{"stdout":"x y z \n4 6 2 \n\n"}︡
 ︠d39364fb-6992-47fc-a044-0d5fd49109a3︠
-
-︡c2a3f42a-cecb-4ecd-83cf-3fcfd1186868︡
 ︠914d8922-a802-412d-a3ad-c544ad1903dci︠
 %md
 ### Packages
@@ -173,14 +183,14 @@ The reference is like a module-namespace and populated with all the members.
 ︠a18c1e66-7233-45c1-8483-754271f71f31︠
 from rpy2.robjects.packages import importr
 r_base = importr("base")
-︡5ec2518d-eefc-4cc4-8354-4ed1164e08f3︡
+︡1b9e2921-3208-442a-87fe-c78dd3d56e72︡
 ︠0cb28cfe-4b10-4ec2-a83f-14344c2f7c64︠
 # a bit of the namespace
 print(dir(r_base)[-50:-40])
-︡b0731c30-bd4a-4009-b15b-903ab9e4717e︡{"stdout":"['upper_tri', 'url', 'utf8ToInt', 'vapply', 'vector', 'version', 'warning', 'warnings', 'weekdays', 'weekdays_Date']\n"}︡
+︡606e615e-95fd-4e9c-8b08-fb2b49bab801︡{"stdout":"['upper_tri', 'url', 'utf8ToInt', 'vapply', 'vector', 'version', 'warning', 'warnings', 'weekdays', 'weekdays_Date']\n"}︡
 ︠029ee09a-8694-42bd-8fa7-2d67fca9ba75︠
 print(r_base.version)
-︡2128b3a7-c190-463b-8fd7-d81aac604be6︡{"stdout":"               _                            \nplatform       x86_64-unknown-linux-gnu     \narch           x86_64                       \nos             linux-gnu                    \nsystem         x86_64, linux-gnu            \nstatus                                      \nmajor          2                            \nminor          15.2                         \nyear           2012                         \nmonth          10                           \nday            26                           \nsvn rev        61015                        \nlanguage       R                            \nversion.string R version 2.15.2 (2012-10-26)\nnickname       Trick or Treat               \n\n"}︡
+︡88297cb1-a09f-48cf-8f68-60404c2eebc4︡{"stdout":"               _                            \nplatform       x86_64-unknown-linux-gnu     \narch           x86_64                       \nos             linux-gnu                    \nsystem         x86_64, linux-gnu            \nstatus                                      \nmajor          2                            \nminor          15.2                         \nyear           2012                         \nmonth          10                           \nday            26                           \nsvn rev        61015                        \nlanguage       R                            \nversion.string R version 2.15.2 (2012-10-26)\nnickname       Trick or Treat               \n\n"}︡
 ︠48f4324e-90e9-4ac7-a79c-d011c2553685︠
 # use Python's `getattr` to access non-standard named identifyers.
 # e.g. matrix multiplication
@@ -188,24 +198,15 @@ A = np.array([[1, 1],
               [1, 7]])
 B = np.array([[4, 5],
               [6, 7]])
-getattr(r_base, "%*%")(A, B)
-︡c1de3ace-dbe2-4451-a9cf-340c23644261︡{"stdout":"<Matrix - Python:0xe771e18 / R:0xe5a9410>\n[10.000000, 46.000000, 12.000000, 54.000000]\n"}︡
+matrix_mult = getattr(r_base, "%*%")
+print(matrix_mult(A, B))
+︡e55763ae-4ba0-4255-b68a-c1d2d8aff87c︡{"stdout":"     [,1] [,2]\n[1,]   10   12\n[2,]   46   54\n\n"}︡
 ︠ddf7c8a4-ad4d-4c0a-9a04-b08cafc324a9︠
 r_base.rep(r_base.c("x", "y", "z"), 10)
 ︡73531a68-a71c-4cfc-8f47-04141148c627︡{"stdout":"<StrVector - Python:0xcd00ea8 / R:0xce81440>\n['x', 'y', 'z', ..., 'x', 'y', 'z']\n"}︡
 ︠3da353d4-4bd4-413f-bea1-8d585f6d1725︠
 ︡a933f884-c525-47a4-af3c-187e388dc8da︡
 ︠440dc108-dfa3-4279-83c8-352845d54ebc︠
-
-︡bf0c0e61-6c20-4066-9e2c-0c2d7f250a18︡
-︠5591a3dd-a31e-4b68-b41f-12b19595b549︠
-
-︡8a9dca2a-4b49-475a-983e-9a392c05f134︡
-︠0d5766e0-12c8-4c2d-a646-398a8147c804i︠
-%md
-## Datasets
-Use `importr` from `rpy2.robjects.packages` to get hold of the dataset package.
-Then fetch a dataset and retrieve the named entry to get hold of the dataframe.
 ︡851e3117-50d4-4ffd-9165-192daafcacfe︡{"html":"<h2>Datasets</h2>\n\n<p>Use <code>importr</code> from <code>rpy2.robjects.packages</code> to get hold of the dataset package.\nThen fetch a dataset and retrieve the named entry to get hold of the dataframe.</p>\n"}︡
 ︠cd4ec889-84b0-406c-87f0-c88c121512bd︠
 from rpy2.robjects.packages import importr
@@ -217,6 +218,8 @@ datasets = importr('datasets')
 faithful = datasets.__rdata__.fetch("faithful")["faithful"]
 print type(faithful)
 ︡a93ab51c-6bd6-4ecd-a430-5f7c6198686d︡{"stdout":"<class 'rpy2.robjects.vectors.DataFrame'>\n"}︡
+︠b3e1b77c-27af-4369-a966-67dfca0852bc︠
+
 ︠6dc17296-b581-4a6c-aa31-34237e79d88d︠
 # number of columns!
 len(faithful)
