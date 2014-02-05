@@ -93,14 +93,14 @@ Now let's read the graph data directly from a tab-delimited file. The file conta
 We'll create the file using the %file cell decorator:
 ︡93304d5c-e312-4e61-aef0-a7bbf85962c9︡{"html":"<p>Now let&#8217;s read the graph data directly from a tab-delimited file. The file contains an additional set of values for SUVs.\nWe&#8217;ll create the file using the %file cell decorator:</p>\n"}︡
 ︠35248d5e-421c-43f3-a3bd-c8c82d585fcd︠
-%file("autos.dat")
+%sage_salvus.file("autos.dat")
 cars	trucks	suvs
 1	2	4
 3	5	4
 6	4	6
 4	5	6
 9	12	16
-︡56bffe73-d1dc-41d0-95fd-5e6deedaee15︡
+︡5e281c34-8bd3-4884-bbf6-d0d6016f71b6︡
 ︠8681a917-4cc5-46c9-a2bb-1661c16d8509i︠
 %md
 We'll also use a vector for storing the colors to be used in our graph so
