@@ -1,0 +1,547 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KOMA-Script Presentation
+% LaTeX Template
+% Version 1.0 (3/3/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original Authors:
+% Marius Hofert (marius.hofert@math.ethz.ch)
+% Markus Kohm (komascript@gmx.info)
+% Described in the PracTeX Journal, 2010, No. 2
+%
+% Modified for a talk about RPy2 and IPython's Rmagic extension
+% It's also a demo about SMC's capabilities to write a presentation.
+% Written by Harald Schilly (harald.schilly@univie.ac.at), 2013-12-03
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+paper=128mm:96mm, % The same paper size as used in the beamer class
+fontsize=11pt, % Font size
+pagesize, % Write page size to dvi or pdf
+parskip=half-, % Paragraphs separated by half a line
+]{scrartcl} % KOMA script (article)
+
+\linespread{1.12} % Increase line spacing for readability
+
+%------------------------------------------------
+% Colors
+\usepackage{xcolor}	 % Required for custom colors
+% Define a few colors for making text stand out within the presentation
+\definecolor{mygreen}{RGB}{44,85,17}
+\definecolor{myblue}{RGB}{60,60,204}
+\definecolor{mybrown}{RGB}{194,164,113}
+\definecolor{myred}{RGB}{255,66,56}
+% Use these colors within the presentation by enclosing text in the commands below
+\newcommand*{\mygreen}[1]{\textcolor{mygreen}{#1}}
+\newcommand*{\myblue}[1]{\textcolor{myblue}{#1}}
+\newcommand*{\mybrown}[1]{\textcolor{mybrown}{#1}}
+\newcommand*{\myred}[1]{\textcolor{myred}{#1}}
+%------------------------------------------------
+
+%------------------------------------------------
+% Margins
+\usepackage[ % Page margins settings
+includeheadfoot,
+top=3.5mm,
+bottom=3.5mm,
+left=5.5mm,
+right=5.5mm,
+headsep=6.5mm,
+footskip=8.5mm
+]{geometry}
+%------------------------------------------------
+
+%------------------------------------------------
+% Fonts
+\usepackage[T1]{fontenc}	 % For correct hyphenation and T1 encoding
+\usepackage{lmodern} % Default font: latin modern font
+\usepackage{utopia} % Alternative font: utopia
+%\usepackage{charter} % Alternative font: low-resolution roman font
+\renewcommand{\familydefault}{\sfdefault} % Sans serif - this may need to be commented to see the alternative fonts
+%------------------------------------------------
+
+%------------------------------------------------
+% Various required packages
+\usepackage{amsthm} % Required for theorem environments
+\usepackage{amsmath}
+\usepackage{bm} % Required for bold math symbols (used in the footer of the slides)
+\usepackage{graphicx} % Required for including images in figures
+\usepackage{tikz} % Required for colored boxes
+\usepackage{booktabs} % Required for horizontal rules in tables
+\usepackage{multicol} % Required for creating multiple columns in slides
+\usepackage{lastpage} % For printing the total number of pages at the bottom of each slide
+\usepackage[english]{babel} % Document language - required for customizing section titles
+\usepackage{microtype} % Better typography
+\usepackage{tocstyle} % Required for customizing the table of contents
+\usepackage{ulem}
+\usepackage{verbatim}
+\usepackage[]{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = myblue, %Colour for external hyperlinks
+  linkcolor    = myblue, %Colour of internal links
+  citecolor   = myblue %Colour of citations
+}
+\usepackage{listings}
+\usepackage{wasysym} % for emoticons
+%------------------------------------------------
+
+%------------------------------------------------
+% Slide layout configuration
+\usepackage{scrpage2} % Required for customization of the header and footer
+\pagestyle{scrheadings} % Activates the pagestyle from scrpage2 for custom headers and footers
+\clearscrheadfoot % Remove the default header and footer
+\setkomafont{pageheadfoot}{\normalfont\color{black}\sffamily} % Font settings for the header and footer
+
+% Sets vertical centering of slide contents with increased space between paragraphs/lists
+\makeatletter
+\renewcommand*{\@textbottom}{\vskip \z@ \@plus 1fil}
+\newcommand*{\@texttop}{\vskip \z@ \@plus .5fil}
+\addtolength{\parskip}{\z@\@plus .25fil}
+\makeatother
+
+% Remove page numbers and the dots leading to them from the outline slide
+\makeatletter
+\newtocstyle[noonewithdot]{nodotnopagenumber}{\settocfeature{pagenumberbox}{\@gobble}}
+\makeatother
+\usetocstyle{nodotnopagenumber}
+
+\AtBeginDocument{\renewcaptionname{english}{\contentsname}{\Large Outline}} % Change the name of the table of contents
+%------------------------------------------------
+
+%------------------------------------------------
+% Header configuration - if you don't want a header remove this block
+\ihead{\hspace{-2mm}\begin{tikzpicture}[remember picture,overlay]\node [xshift=\paperwidth/2,yshift=-\headheight] (mybar) at (current page.north west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=2\headheight,top color=myblue!81,bottom color=myblue]{}; % Colored bar\node[below of=mybar,yshift=3.3mm,rectangle,shade,inner sep=0pt,minimum width=128mm,minimum height =1.5mm,top color=black!50,bottom color=white]{}; % Shadow under the colored barshadow
+\end{tikzpicture}\color{white}\runninghead} % Header text defined by the \runninghead command below and colored white for contrast
+%------------------------------------------------
+
+%------------------------------------------------
+% Footer configuration
+\newlength{\footheight}
+\setlength{\footheight}{8mm} % Height of the footer
+\addtokomafont{pagefoot}{\footnotesize} % Small font size for the footnote
+
+\ifoot{% Left side
+\hspace{-2mm}
+\begin{tikzpicture}[remember picture,overlay]
+\node [xshift=\paperwidth/2,yshift=\footheight] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=3pt,top color=myblue,bottom color=mygreen]{}; % Green bar
+\end{tikzpicture}
+\myauthor\ \raisebox{0.2mm}{$\bm{\vert}$}\ \myuni % Left side text
+}
+
+\ofoot[\pagemark/\pageref{LastPage}\hspace{-2mm}]{\pagemark/\pageref{LastPage}\hspace{-2mm}} % Right side
+%------------------------------------------------
+
+%------------------------------------------------
+% Section spacing - deeper section titles are given less space due to lesser importance
+\usepackage{titlesec} % Required for customizing section spacing
+\titlespacing{\section}{0mm}{0mm}{0mm} % Lengths are: left, before, after
+\titlespacing{\subsection}{0mm}{0mm}{-1mm} % Lengths are: left, before, after
+\titlespacing{\subsubsection}{0mm}{0mm}{-2mm} % Lengths are: left, before, after
+\setcounter{secnumdepth}{0} % How deep sections are numbered, set to no numbering by default - change to 1 for numbering sections, 2 for numbering sections and subsections, etc
+%------------------------------------------------
+
+%------------------------------------------------
+% Theorem style
+\newtheoremstyle{mythmstyle} % Defines a new theorem style used in this template
+{0.5em} % Space above
+{0.5em} % Space below
+{} % Body font
+{} % Indent amount
+{\sffamily\bfseries} % Head font
+{} % Punctuation after head
+{\newline} % Space after head
+{\thmname{#1}\ \thmnote{(#3)}} % Head spec
+
+\theoremstyle{mythmstyle} % Change the default style of the theorem to the one defined above
+\newtheorem{theorem}{Theorem}[section] % Label for theorems
+\newtheorem{remark}[theorem]{Remark} % Label for remarks
+\newtheorem{algorithm}[theorem]{Algorithm} % Label for algorithms
+\makeatletter % Correct qed adjustment
+%------------------------------------------------
+
+%------------------------------------------------
+% The code for the box which can be used to highlight an element of a slide (such as a theorem)
+\newcommand*{\mybox}[2]{ % The box takes two arguments: width and content
+\par\noindent
+\begin{tikzpicture}[mynodestyle/.style={rectangle,draw=myblue,thick,inner sep=2mm,text justified,top color=white,bottom color=white,above}]\node[mynodestyle,at={(0.5*#1+2mm+0.4pt,0)}]{ % Box formatting
+\begin{minipage}[t]{#1}
+#2
+\end{minipage}
+};
+\end{tikzpicture}
+\par\vspace{-1.3em}}
+%------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION INFORMATION
+%----------------------------------------------------------------------------------------
+
+\newcommand*{\mytitle}{R meets Python in the Cloud} % Title
+\def\shorttitle{R meets Python}
+\newcommand*{\runninghead}{\shorttitle} % Running head displayed on almost all slides
+\newcommand*{\newhead}[1]{\renewcommand*{\runninghead}{\shorttitle: #1}}
+\newcommand*{\myauthor}{Harald Schilly} % Presenters name(s)
+\newcommand*{\mydate}{2013-12-03} % Presentation date
+\newcommand*{\myuni}{University of Vienna
+\raisebox{0.2mm}{$\bm{\vert}$}\
+$\text{Vienna} \leftarrow \text{R Meetup}$} % University or department
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+% Title slide - you may have to tweak a few of the numbers if you wish to make changes to the layout
+\thispagestyle{empty} % No slide header and footer
+\begin{tikzpicture}[remember picture,overlay] % Background box
+\node [xshift=\paperwidth/2,yshift=\paperheight/2] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=\paperheight/3,top color=myblue,bottom color=myblue]{}; % Change the height of the box, its colors and position on the page here
+\end{tikzpicture}
+% Text within the box
+\begin{flushright}
+\vspace{0.65cm}
+\color{white}\sffamily
+{\bfseries\Large\mytitle\par} % Title
+\vspace{0.4cm}
+\normalsize
+\myauthor\par % Author name
+\mydate\par % Date
+\vfill
+\end{flushright}
+
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\thispagestyle{empty} % No slide header and footer
+
+%\small\tableofcontents % Change the font size and print the table of contents - it may be useful to shrink the font size further if the presentation is full of sections
+% To exclude sections/subsections from the table of contents, put an asterisk after \(sub)section like so: \section*{Section Name}
+
+%\clearpage
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\newhead{Motivation}
+\section{R vs. Python}
+
+\href{http://www.r-project.org}{\textbf{R}}
+is a \uline{vertically specialized} environment for statistics.
+It is based on the domain specific \textbf{S} language (mid 70-ties),
+has a lot of packages for statistics and supporting functionalities.
+
+\href{http://www.python.org}{\textbf{Python}} is a general purpose language,
+designed for beginners (clear syntax, easy to start),
+very popular (Class A, Tiboe Index),
+excellent support for extensions and
+also generally accepted in engineering and scientific areas.
+
+Remarkably, the latest incarnation of S
+(``\texttt{\~}''--formulas and \texttt{data.frame})
+and the first version of Python appeared both in 1991.
+
+\clearpage
+
+%------------------------------------------------
+
+\newhead{Common Ground}
+\subsection{Common Ground}
+
+R is primarily an REPL command-line interpreter,
+which can also run scripts.
+It manages its own ``world'' of objects.
+
+In order to interface with R:
+\begin{itemize}
+\item{data-structures:} need to be passed in and out.
+\item{functions:} need to be called from the ``outside''
+in order to change R's internal state on the ``inside''.
+\item{plots:} are created in R and need to be made available.
+\item{speed\&reliability:} everything should happen fast and reliably.
+\end{itemize}
+
+
+\clearpage
+\newhead{RPy2}
+\section{RPy2}
+
+There is one famous Python library to accomplish this:
+\href{http://rpy.sourceforge.net/rpy2.html}{\textbf{RPy2}}
+
+It is a Python module and it is compiled against R's C Code.
+That makes it a robust low-level interface.
+
+R's environment for variable states, the functions, operators,
+libraries/packages, and other elements are
+\uline{exposed as Python objects}.
+
+Exchanging data from and to R is based on
+converting basic data types, ordered lists, strings,
+and most notably
+\href{http://wiki.scipy.org/Tentative_NumPy_Tutorial}{\uline{NumPy Arrays}}.
+
+\clearpage
+\newhead{RPy2: Example}
+
+\begin{lstlisting}[language=python]
+# evaluate arbitrary code
+>>> summary = rpy2.robjects.r("...") # .reval(...)
+
+# a function reference
+>>> summary = rpy2.robjects.r['summary']
+
+# calling `seq` directly
+>>> rpy2.robjects.r.seq(1,10)
+
+# after activating NumPy Array conversion:
+>>> xx = np.array([5,4,2.2,-1,-5.5])
+>>> summary(xx)
+\end{lstlisting}
+
+
+\clearpage
+\newhead{IPython}
+\section{IPython}
+
+\href{http://www.ipython.org}{\textbf{IPython}} is probably the most
+widely used interface to Python for scientific purposes.
+It's excellent for rapid prototyping, exchanging ideas and results,
+and publishing: e.~g. \href{http://nbviewer.ipython.org/}{NBViewer} renders them on-line.
+
+Relevant here: a so called
+\href{http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html}
+{\textbf{R-``magic''-extension}} exists,
+based on RPy2, which helps to conveniently talk to R.
+
+\clearpage
+\newhead{IPython: Commands}
+\subsection{IPython: Commands}
+
+\begin{itemize}
+\item{\texttt{\%R}} runs a line of R code: \texttt{result = \%R ...}
+\item{\texttt{\%\%R -i <invar> -o <outvar> ...}}
+runs the entire cell in R while converting the given input and output variables.
+\item{\texttt{\%Rpush <var>}} sends the data of a given variable to R
+\item{\texttt{\%Rpull <var>}} gets the variable and Python's namespace is populated
+\item{\texttt{\%Rget <var>}} is similar, only retrieves the actual data.
+\end{itemize}
+
+\clearpage
+\newhead{IPython: Example}
+\subsection{IPython: Example}
+
+Simple example:
+\begin{verbatim}
+   %%R
+   a <- seq(10) + 5.5
+   print(summary(a))
+\end{verbatim}
+gives
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+   6.50    8.75   11.00   11.00   13.25   15.50
+\end{verbatim}
+
+\mygreen{$\Rightarrow{}$ All examples shown as part of this talk are
+\href{http://nbviewer.ipython.org/urls/github.com/sagemath/cloud-examples/raw/master/r/rmagic.ipynb}{\uline{here}}}
+
+\clearpage
+\newhead{Sagemath Cloud}
+\section{Sagemath Cloud}
+
+\href{https://cloud.sagemath.org}{The Sagemath Cloud} is a web-based online
+environment for all sorts of computations.
+It's not only running
+\href{http://www.sagemath.org}{the Sage mathematical software system},
+but also R, LaTeX, IPython and much more.
+Just open a Linux terminal and explore its capabilities \smiley
+
+All projects can be \textit{shared with collaborators},
+edits in files are \textit{synchronized} in real-time,
+and your work is \textit{continuously backed-up}.
+
+This talk and the examples are part of the
+\href{https://github.com/sagemath/cloud-examples}{Sagemath Cloud examples repository}.
+
+\clearpage
+\newhead{Links}
+\section{Links}
+
+\begin{itemize}
+\item \href{http://rpy.sourceforge.net/rpy2.html}{\textbf{RPy2}}
+\item \href{http://www.ipython.org}{IPython}
+\begin{itemize}
+\item \href{http://ipython.org/ipython-doc/dev/config/extensions/rmagic.html}{R-``magic''-extension}
+\item \href{http://nbviewer.ipython.org/urls/github.com/sagemath/cloud-examples/raw/master/r/rmagic.ipynb}{IPython Rmagic example}
+\item \href{http://nbviewer.ipython.org/urls/github.com/ipython/ipython/raw/master/examples/notebooks/R Magics.ipynb}{IPython Documentation Example}
+\end{itemize}
+\item \href{https://cloud.sagemath.org}{Sagemath Cloud}
+\end{itemize}
+
+
+%------------------------------------------------
+%------------------------------------------------
+
+\begin{comment}
+\begin{multicols}{2} % Divide text into multiple columns
+\mygreen{Sed diam enim, sagittis nec} condimentum sit amet, ullamcorper sit amet libero. \mybrown{Aliquam vel dui orci}, a porta odio. \myred{Nullam id suscipit} ipsum. \myblue{Aenean lobortis} commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
+\end{multicols}
+
+\clearpage
+
+%------------------------------------------------
+
+\subsection{Bullet Points and Numbered Lists}
+
+\begin{itemize}
+\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
+\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
+\end{itemize}
+
+\begin{enumerate}
+\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
+\item Nam cursus est eget velit posuere pellentesque
+\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
+\end{enumerate}
+
+\clearpage
+
+%------------------------------------------------
+
+\subsection{Verbatim}
+
+How to include a theorem in this presentation:
+\begin{verbatim}
+\mybox{0.8\textwidth}{
+\begin{theorem}[Murphy (1949)]
+Anything that can go wrong, will go wrong.
+\end{theorem}
+}
+\end{verbatim}
+
+\clearpage
+
+%------------------------------------------------
+
+
+\section{Displaying Information}
+
+\clearpage
+
+%------------------------------------------------
+
+\subsection{Table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l l l}
+\toprule
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\midrule
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\bottomrule
+\end{tabular}
+\caption{Table caption}
+\end{table}
+
+\clearpage
+
+%------------------------------------------------
+
+\subsection{Figure}
+
+\begin{figure}[h]
+\centering\includegraphics[width=0.4\linewidth]{placeholder}
+\end{figure}
+
+\clearpage
+
+%------------------------------------------------
+
+\subsection{Theorem}
+
+The most common definition of \mygreen{Murphy's Law} is as follows.
+
+\mybox{0.8\textwidth}{ % Example of encapsulating text in a colored box
+\begin{theorem}[Murphy (1949)]
+Anything that can go wrong, will go wrong.
+\end{theorem}
+}
+
+\begin{proof}
+A special case of this theorem is proven in the textbook.
+\end{proof}
+
+\begin{remark}
+This is a remark.
+\end{remark}
+
+\begin{algorithm}
+This is an algorithm.
+\end{algorithm}
+
+\clearpage
+
+
+
+%------------------------------------------------
+
+\thispagestyle{empty} % No slide header and footer
+
+\bibliographystyle{unsrt}
+\bibliography{sample}
+
+\clearpage
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{comment}
+
+\section{Citations}
+
+An example of the \texttt{\textbackslash cite} command to cite within the presentation:
+
+This statement requires citation \cite{Smith:2012qr}.
+
+\clearpage
+
+
+\thispagestyle{empty} % No slide header and footer
+
+\begin{tikzpicture}[remember picture,overlay] % Background box
+\node [xshift=\paperwidth/2,yshift=\paperheight/2] at (current page.south west)[rectangle,fill,inner sep=0pt,minimum width=\paperwidth,minimum height=\paperheight/3,top color=mygreen,bottom color=mygreen]{}; % Change the height of the box, its colors and position on the page here
+\end{tikzpicture}
+% Text within the box
+\begin{flushright}
+\vspace{0.6cm}
+\color{white}\sffamily
+{\bfseries\LARGE Questions?\par} % Request for questions text
+\vfill
+\end{flushright}
+\end{comment}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
+%sagemathcloud={"zoom_width":100}
