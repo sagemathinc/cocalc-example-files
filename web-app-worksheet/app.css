@@ -1,0 +1,7 @@
+.app-output {
+    color:#555;
+    padding: 2em;
+    border:1px solid orange;
+    border-radius:25px;
+    box-shadow: 10px 10px 5px #888888;
+}
