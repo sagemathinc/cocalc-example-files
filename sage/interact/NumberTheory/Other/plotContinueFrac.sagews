@@ -1,0 +1,7 @@
+︠3087dcc6-c101-4cf8-9fdd-13fa12096411︠
+@interact
+def _(number=e, ymax=selector([5,20,..,400],nrows=2), clr=Color('purple'), prec=[500,1000,..,5000]):
+    c = list(continued_fraction(RealField(prec)(number))); print c
+    show(line([(i,z) for i, z in enumerate(c)],rgbcolor=clr),ymax=ymax,figsize=[10,2])
+︡6cbd17de-777e-4d49-8462-664f7eafc334︡{"interact":{"style":"None","flicker":false,"layout":[[["number",12,null]],[["ymax",12,null]],[["clr",12,null]],[["prec",12,null]],[["",12,null]]],"id":"6a7882dd-c0e2-45fd-a6c5-4ec780dc1062","controls":[{"control_type":"input-box","default":"e","label":"number","nrows":1,"width":null,"readonly":false,"submit_button":null,"var":"number","type":null},{"buttons":false,"control_type":"selector","ncols":null,"button_classes":null,"default":0,"lbls":["5","20","35","50","65","80","95","110","125","140","155","170","185","200","215","230","245","260","275","290","305","320","335","350","365","380","395"],"label":"ymax","nrows":2,"width":null,"var":"ymax"},{"widget":null,"control_type":"color-selector","hide_box":false,"Color":"<class 'sage.plot.colors.Color'>","label":"clr","default":"#800080","readonly":false,"var":"clr"},{"buttons":false,"control_type":"selector","ncols":null,"button_classes":null,"default":0,"lbls":["500","1000","1500","2000","2500","3000","3500","4000","4500","5000"],"label":"prec","nrows":null,"width":null,"var":"prec"}]}}︡
+︠f229692b-283e-4c3e-a345-d302e2e72dc1︠
