@@ -1,0 +1,37 @@
+\documentclass[master.tex]{subfiles}
+
+\setcounter{chapter}{0}
+
+\begin{document}
+
+\chapter{Makefile}
+
+\section{\texttt{latexmk}}
+
+\texttt{latexmk} is a versatile utility for building \LaTeX documents.
+
+To make it work well with SageTeX (see page \ref{ch:sagetex}),
+the file \texttt{latexmkrc} in the current directory defines
+additional dependencies and instructions.
+
+For more information, type a terminal \texttt{man latexmk}.
+
+\section{Use \texttt{make} to build the PDF}
+
+Finally, one has to tell the SMC interface to use the Makefile.
+In order to do so, click on `build` and change the
+command to \texttt{make 'filename.pdf'}.
+Then, SageMathCloud will call the Makefile's definition to build the PDF document.
+
+When enabled correctly, at the bottom of each file (like this one here),
+this configuration string will appear:
+
+\begin{verbatim}
+%sagemathcloud={"latex_command":"make '04-sagetex.pdf'"}
+\end{verbatim}
+
+Do not delete it!
+
+
+\end{document}
+%sagemathcloud={"latex_command":"make '01-make.pdf'"}

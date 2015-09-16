@@ -1,0 +1,104 @@
+\documentclass[11pt,
+     DIV=14,
+     oneside,
+     %headsepline,
+     %footsepline,
+     %plainheadsepline,
+     %plainfootsepline,
+     dottedtoc,
+     headings=normal,
+     headinclude=true,
+     footinclude=true,
+     parskip=half]{scrreprt}
+
+\usepackage{subfiles}
+
+\usepackage[USenglish,english]{babel}
+% for German text, change this to
+% \usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% avoid old unsafe commands
+\RequirePackage[l2tabu,orthodox,abort]{nag}
+\usepackage{fixltx2e}
+
+\usepackage{typearea}
+% \usepackage{layouts}
+
+\usepackage[onehalfspacing]{setspace}
+\raggedbottom
+\usepackage{graphicx}
+
+% font tweaks
+\usepackage{ellipsis,ragged2e,marginnote}
+\usepackage[tracking=true]{microtype}
+\usepackage{cmbright}
+%\usepackage[upright]{fourier}
+\usepackage{inconsolata} % better monospaced font!
+\renewcommand{\familydefault}{\sfdefault}
+\setkomafont{sectioning}{\normalcolor\bfseries}
+\setkomafont{disposition}{\normalcolor\bfseries}
+
+\usepackage[small, bf, up, hang]{caption}
+\usepackage[percent]{overpic}
+
+\usepackage{mathtools}
+\usepackage{nicefrac}
+% unit[2.3]{N} and unitfrac[4.3]{Nm}{s}
+\usepackage{units}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+
+%%% Bibliography management
+% quite popular is natbib, read about it here
+% https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+% \usepackage{natbib}
+% for this document we use biblatex with the biber backend
+% this works very well, also for special characters etc.
+\usepackage[backend=bibtex,style=alphabetic]{biblatex}
+% this file contains the literature database
+\addbibresource{bibliography.bib}
+
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{sagetex}
+\usepackage{xspace}
+\usepackage{color}
+
+\usepackage[automark]{scrlayer-scrpage}
+\clearpairofpagestyles
+% \ihead{\leftmark}
+% \ohead{\includegraphics[height=1cm]{IMG/Logo.JPG}}
+\ofoot{\thepage}
+
+
+
+\begin{document}
+\chapter*{Multiple Source Files}
+
+This is an overview about how to write a large \LaTeX
+document with multiple input sources, where:
+
+\begin{itemize}
+\item all sub-documents also have preview capabilities
+\item the forward/inverse search works
+\item SageTeX~\cite{sagetex} is supported
+\item formulas, graphics and the advanced KOMAscript package is enabled.
+\end{itemize}
+
+\tableofcontents
+
+\subfile{01-make.tex}
+\subfile{02-subfiles.tex}
+\subfile{03-komascript.tex}
+\subfile{04-sagetex.tex}
+
+\chapter{Conclusion}
+
+\printbibliography
+
+\end{document}
+
+%sagemathcloud={"latex_command":"make 'master.pdf'"}

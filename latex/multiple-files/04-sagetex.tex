@@ -1,0 +1,31 @@
+\documentclass[master.tex]{subfiles}
+
+\setcounter{chapter}{3}
+
+\begin{document}
+
+\chapter{SageTeX}
+\label{ch:sagetex}
+
+
+\texttt{latexmk} is a versatile utility for building \LaTeX documents.
+
+To make it work well with SageTeX,
+the file \texttt{latexmkrc} in the current directory defines
+additional dependencies and instructions.
+
+For more information, type a terminal \texttt{man latexmk}.
+
+To enable SageTeX in combination with \texttt{latexmk},
+this page explains how to modify the \texttt{latexmkrc} file:
+
+\url{https://github.com/dandrake/sagetex/wiki}
+
+\section{SageTeX Demo}
+
+% \verb|diff(x * sin(x),x )| = \sage{diff(s * sin(x) , x)}
+
+\sage{1+1}
+
+\end{document}
+%sagemathcloud={"latex_command":"make '04-sagetex.pdf'"}
