@@ -19,7 +19,3 @@ clean:
 	latexmk -pdf -bibtex -synctex=1 -interaction=nonstopmode -outdir=$(OUTDIR) $<
 	-cp -vlf $(OUTDIR)/$@ .
 	-cp -vlf $(OUTDIR)/$(patsubst %.tex,%.synctex.gz,$<) .
-
-
-%.sagetex.sage:
-	cd $(OUTDIR) && sage $@
