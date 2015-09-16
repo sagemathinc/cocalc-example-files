@@ -1,6 +1,8 @@
-\documentclass[11pt,
-     DIV=14,
-     oneside,
+\documentclass[12pt,
+     DIV=12,
+     twoside=false,
+     twocolumn=false,
+     abstraction,
      %headsepline,
      %footsepline,
      %plainheadsepline,
@@ -9,11 +11,11 @@
      headings=normal,
      headinclude=true,
      footinclude=true,
-     parskip=half]{scrreprt}
+     parskip=half]{scrbook}
 
 \usepackage{subfiles}
 
-\usepackage[USenglish,english]{babel}
+\usepackage[USenglish]{babel}
 % for German text, change this to
 % \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
@@ -64,22 +66,34 @@
 \usepackage{multirow}
 \usepackage{rotating}
 \usepackage{sagetex}
-\usepackage{xspace}
 \usepackage{color}
 
+% usually, inside a text a LaTeX command needs a trailing \ or {}
+% for a trailing space. xspace solves this by looking ahead and inserting
+% it for you.
+\usepackage{xspace}
+% Hence, after this redefinition "\LaTeX is" properly gives "LaTeX is".
+\let\orgLaTeX\LaTeX
+\renewcommand*{\LaTeX}{\orgLaTeX\xspace}
+
+% quick setup for page numbers in the footer
 \usepackage[automark]{scrlayer-scrpage}
 \clearpairofpagestyles
 % \ihead{\leftmark}
 % \ohead{\includegraphics[height=1cm]{IMG/Logo.JPG}}
 \ofoot{\thepage}
 
-
+\title{Multiple Source Files in SMC}
+\author{Harald Schilly}
 
 \begin{document}
-\chapter*{Multiple Source Files}
 
-This is an overview about how to write a large \LaTeX
-document with multiple input sources, where:
+\maketitle
+
+\chapter{Introduction}
+
+This is an overview about how to write a large \LaTeX document
+with multiple input sources, where:
 
 \begin{itemize}
 \item all sub-documents also have preview capabilities
@@ -88,7 +102,23 @@ document with multiple input sources, where:
 \item formulas, graphics and the advanced KOMAscript package is enabled.
 \end{itemize}
 
+
 \tableofcontents
+
+\chapter{Setup}
+
+The general setup of this document is best explained by reading the header.
+
+\section{Bibliography}
+
+The bibliography uses \texttt{biblatex} and \texttt{biber},
+which works much more robust than \texttt{bibtex}.
+The file ``\texttt{bibliography.bib}'' defines the references
+in the usual bibtex format,
+and the references work across all subdocuments.
+It also directly supports special characters. For example, the \cite{komascript} reference contains the letter ``ü''.
+
+The next chapters are subdocuments and describe each individual aspect in more detail.
 
 \subfile{10-make.tex}
 \subfile{20-subfiles.tex}
