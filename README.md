@@ -7,10 +7,10 @@ in [Sage Math Cloud](https://cloud.sagemath.org).
 Just clone them into your working directory via
 
 1. Open the [+ New] tab,
-1. Enter `https://github.com/haraldschilly/sage-cloud-templates.git` in the text box,
-1. Then click on `From Web` to download and clone the entire project.
+1. Enter `https://github.com/sagemath/cloud-examples.git` in the text box,
+1. Then click on `Download from Internet` to download and clone the entire project.
 
-Go back to `Files` and you are ready to go!
+Go back to `Files`, open the `sage-cloud` directory and you are ready to start exploring SMC!
 
 Authors
 -------
