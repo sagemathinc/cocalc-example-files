@@ -1,25 +1,35 @@
 \documentclass{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{mathtools}
 \usepackage{sagetex}
 \usepackage{url}
 
+\title{This is a demo of SageTeX}
+
 \begin{document}
 
-\section{This is a test}
+\maketitle
+
+To learn more about \LaTeX: \url{https://en.wikibooks.org/wiki/LaTeX}
+
+For SageTeX, please check out the project:
+\url{https://github.com/dandrake/sagetex}
+
+\section{Test}
 
 Testing $\frac{1}{178} = \sage{n(1/178)}$.
 
-\section{plotting}
+\section{Plotting}
 
 is always fun ...
 
-\sageplot[width=.5\textwidth]{plot(sin(x), (x,-10,10))}
+\sageplot[width=.5\textwidth]{plot(x * (1+ sin(x)), (x,-10,10))}
 
 \section{This is a test}
 
-Testing $(1-x-x^2)^3 = \sage{((1-x-x^2)^2).expand()}$.
+Testing $(1-x^2)^3 = \sage{((1-x^2)^2).expand()}$.
 
 Using Sage\TeX, one can use Sage to compute things and put them into
 your \LaTeX{} document. For example, there are
@@ -30,7 +40,7 @@ it from somewhere.
 Here's some Sage code:
 
 \begin{sageblock}
-f(x) = sin(cos(2*x)^2 / (2+x))
+f(x) = cos(2*x)^2 / (2+x)
 \end{sageblock}
 
 The first derivative of $f$ is $\sage{diff(f,x)}$.
@@ -64,5 +74,16 @@ A_{m,n} =
 
 More here: \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}.
 
+\section{Pure Text}
+
+Usually, \verb|\sage{}| assumes that the value presented is
+a mathematical formula and wraps it into \$.
+Alternatively, one can display a Python-string via \verb|\sagestr{}|.
+
+\begin{sagesilent}
+u = 1 + 1
+\end{sagesilent}
+
+1+1 = \sagestr{str(u)}.
 
 \end{document}
