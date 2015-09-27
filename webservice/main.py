@@ -1,36 +1,69 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# This runs a demo-webservice inside SMC
+# This runs a demo-webservice inside SMC.
+# Run by typing
+#      sage -python main.py
 
-def get_tun0ip():
-    import subprocess as sp
-    ifconfig = sp.check_output(["ifconfig", "tun0" ])
-    tun0ip = ifconfig.split("\n")[1].split(":")[1].split(" ")[0]
-    print "tun0 IP address is '%s'" % tun0ip
-    return tun0ip
+import json
+import os
 
-def projectid():
-    import json
-    import os
-    info = json.load(open(os.path.join("..", ".sagemathcloud", "info.json"), 'r'))
-    return info['project_id']
-
-from flask import Flask
+from flask import Flask, request
 app = Flask(__name__)
+#app.debug = True  # Uncomment this if you wish to debug
 
-@app.route('/')
-def hello_world():
-    from datetime import datetime
-    return 'Hello World!\nThe current time is %s' % datetime.utcnow()
+port = 8765
+info = json.load(
+    open(os.path.join(os.environ['HOME'], ".sagemathcloud", "info.json"), 'r'))
+base_url = "/%s/port/%s" % (info['project_id'], port)
+
+html_template = """
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+<title>%(title)s</title>
+</head>
+
+<body>
+
+<p>%(content)s</p>
+
+</body>
+</html>
+"""
+
+
+@app.route(base_url + '/', strict_slashes=False)
+def info():
+    content = """<p>SMC Webservice running</p>
+    <p><b>Routes:</b></p>
+
+    <ul>
+    <li><a href="%(route)s/">%(route)s/ - list of routes</a></li>
+    <li><a href="%(route)s/get">%(route)s/get - simple get request</a></li>
+    </ul>""" % {'route': base_url}
+    return html_template % {'title': 'Info', 'content': content}
+
+
+@app.route(base_url + '/get', methods=['GET'])
+def get_something():
+    content = """<p>Try something like <a href="%(base_url)s/get?something=foo">%(base_url)s/get?something=foo</a></p>""" % {
+        'base_url': base_url}
+    if request.method == 'GET':
+        something = request.args.get("something", "")
+        if len(something) > 0:
+            content = "Got " + something
+    return html_template % {'title': 'Info', 'content': content}
 
 if __name__ == "__main__":
-    for i in range(10):
-        import random
-        port = random.randint(2000, 32000)
-        try:
-            print "Tying to open https://cloud.sagemath.org/%s/port/%s/" % (projectid(), port)
-            #app.run(host = get_tun0ip(), port = port)
-            app.run(host = "0.0.0.0", port = port)
-            import sys; sys.exit(0)
-        except Exception as e:
-            print "... failed, trying other port\n%s" % e
+    try:
+        info = json.load(
+            open(os.path.join(os.environ['HOME'], ".sagemathcloud", "info.json"), 'r'))
+        print("Try to open https://cloud.sagemath.com" + base_url + '/')
+        app.run(host='0.0.0.0', port=port)
+        import sys
+        sys.exit(0)
+    except Exception as e:
+        print "... failed, try another port (change the port= line in the script) \n%s" % e
