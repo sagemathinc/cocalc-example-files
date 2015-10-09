@@ -83,7 +83,8 @@
 % \ohead{\includegraphics[height=1cm]{IMG/Logo.JPG}}
 \ofoot{\thepage}
 
-\title{Multiple Source Files in SMC}
+\title{Multiple \LaTeX Source Files}
+\subtitle{Howto handle this in SMC}
 \author{Harald Schilly}
 
 \begin{document}
@@ -96,10 +97,10 @@ This is an overview about how to write a large \LaTeX document
 with multiple input sources, where:
 
 \begin{itemize}
-\item all sub-documents also have preview capabilities
-\item the forward/inverse search works
-\item SageTeX~\cite{sagetex} is supported
-\item formulas, graphics and the advanced KOMAscript package is enabled.
+\item all sub-documents can be previewed by rendering only the partial document,
+\item the forward/inverse search works,
+\item SageTeX~\cite{sagetex} is supported,
+\item formulas, graphics and the advanced KOMAscript package are enabled.
 \end{itemize}
 
 
@@ -107,18 +108,21 @@ with multiple input sources, where:
 
 \chapter{Setup}
 
-The general setup of this document is best explained by reading the header.
+The general setup of this document is best explained by reading the header
+of the ``\texttt{master.tex}'' file.
 
 \section{Bibliography}
 
 The bibliography uses \texttt{biblatex} and \texttt{biber},
-which works much more robust than \texttt{bibtex}.
+which works much more robust than the older \texttt{bibtex}.
 The file ``\texttt{bibliography.bib}'' defines the references
 in the usual bibtex format,
-and the references work across all subdocuments.
-It also directly supports special characters. For example, the \cite{komascript} reference contains the letter ``ü''.
+and the references work across all sub-documents.
+It also directly supports special characters. For example, the \cite{komascript} reference contains the letter ``ü'',
+which is processed and rendered without any issues.
 
-The next chapters are subdocuments and describe each individual aspect in more detail.
+The next chapters are sub-documents.
+They briefly describe each individual aspect in more detail.
 
 \subfile{10-make.tex}
 \subfile{20-subfiles.tex}

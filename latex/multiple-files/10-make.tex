@@ -9,18 +9,30 @@
 \section{\texttt{latexmk}}
 
 \texttt{latexmk} is a versatile utility for building \LaTeX documents.
+It automatically handles table of content, indices,
+references and bibliography.
 
-To make it work well with SageTeX (see page \ref{sec:sagetex}),
-the file \texttt{latexmkrc} in the current directory defines
-additional dependencies and instructions.
+To make it also work well with SageTeX (see page \ref{sec:sagetex}),
+you have to add the file \texttt{latexmkrc}
+into the current directory.
+It defines additional dependencies and instructions for
+building the whole document using SageTeX.
 
 For more information, type a terminal \texttt{man latexmk}.
 
 \section{Use \texttt{make} to build the PDF}
 
-Finally, one has to tell the SMC interface to use the Makefile.
-In order to do so, click on `build` and change the
-command to \texttt{make 'filename.pdf'}.
+Finally, one has to tell the SMC environment to use
+instead of the default build command
+the much more sophisticated Makefile.
+In order to do so,
+first add the Makefile to your project,
+modify it to match your filenames,
+and then click on the `build`-button (top right)
+and change the command to \texttt{make 'filename.pdf'}.
+In our case here, this is \texttt{make '10-make.pdf'}
+or \texttt{make 'master.pdf'} for the master document.
+
 Then, SageMathCloud will call the Makefile's definition to build the PDF document.
 
 When enabled correctly, at the bottom of each file (like this one here),
@@ -31,7 +43,6 @@ this configuration string will appear:
 \end{verbatim}
 
 Do not delete it!
-
 
 \end{document}
 %sagemathcloud={"latex_command":"make '10-make.pdf'"}

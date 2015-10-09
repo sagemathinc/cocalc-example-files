@@ -6,8 +6,21 @@
 
 \chapter{Subfiles Package}
 
+The subfiles \LaTeX package~\cite{subfiles}
+is able to combine multiple source files
+in one single document.
+In contrast to other commands like \verb|\input| or \verb|\include|,
+it is also possible to render the partial document with
+the header definitions of the master document.
 
+Also, in the header of each subfile,
+additional instructions can be embedded.
+In this example here,
+\verb|\setcounter{chapter}{1}| sets the counter for the chapter
+in order to get a consistent numbering.
+(Otherwise -- because \LaTeX only sees this partical document --
+it would start its numbering at 1 and not 2.)
 
 
 \end{document}
-%sagemathcloud={"latex_command":"make '20-subfiles.tex'"}
+%sagemathcloud={"latex_command":"make '20-subfiles.pdf'"}

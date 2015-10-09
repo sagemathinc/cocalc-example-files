@@ -8,7 +8,13 @@
 \label{sec:sagetex}
 
 
+\section{SageTeX and \texttt{latexmk}}
+
 \texttt{latexmk} is a versatile utility for building \LaTeX documents.
+It automatically learns about the inter-dependencies of all
+documents and generated intermediate files.
+It uses this information to run and repeatedly re-run various tools 
+to produce a working final document.
 
 To make it work well with SageTeX,
 the file \texttt{latexmkrc} in the current directory defines
@@ -21,11 +27,40 @@ this page explains how to modify the \texttt{latexmkrc} file:
 
 \url{https://github.com/dandrake/sagetex/wiki}
 
+Little caveat: to make it work in this demo,
+a small wrapper script ``\texttt{run-sagetex.py}''
+handles the filename and calling in order to work with SageTeX
+correctly.
+
 \section{SageTeX Demo}
 
-% \verb|diff(x * sin(x),x )| = \sage{diff(s * sin(x) , x)}
+1 + 1 = \sage{1+1}
 
-\sage{1+1}
+% this is only processed in SageMath and not displayed
+\begin{sagesilent}
+x = var('x')
+ex = (1 + x)^5
+exe = ex.expand()
+\end{sagesilent}
+
+$\sage{ex} \rightarrow \sage{exe}$
+
+Raw Strings:
+
+\sagestr{str(CartesianProduct(['a', 'b'], [1, 2, 3]).list())}
+
+Defining a function g:
+
+\begin{sageblock}
+a = 2
+b = 3
+x = var('x')
+g = a * sin(b * x) + sqrt(x)
+\end{sageblock}
+
+And a plot of $g = \sage{g}$ from $[0, 10]$:
+
+\sageplot[width=.5\textwidth]{plot(g, 0, 10)}
 
 \end{document}
 %sagemathcloud={"latex_command":"make '40-sagetex.pdf'"}
