@@ -23,4 +23,4 @@ Authors
 License
 -------
 
-Apache 2.0
+Unless otherwise noted in the respective source file: Apache 2.0.
