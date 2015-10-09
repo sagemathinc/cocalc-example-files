@@ -1,3 +1,4 @@
+# Ignore common LaTeX extensions
 *.pdf
 *.aux
 *-blx.bib
@@ -8,6 +9,8 @@
 *.backup
 *.bbl
 *.fdb_latexmk
+*.nav
+*.snm
 *.idx
 *.ilg
 *.ind
