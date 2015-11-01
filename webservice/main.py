@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 port = 8765
 info = json.load(
-    open(os.path.join(os.environ['HOME'], ".sagemathcloud", "info.json"), 'r'))
+    open(os.path.join(os.environ['HOME'], ".smc", "info.json"), 'r'))
 base_url = "/%s/port/%s" % (info['project_id'], port)
 
 html_template = """
@@ -60,7 +60,7 @@ def get_something():
 if __name__ == "__main__":
     try:
         info = json.load(
-            open(os.path.join(os.environ['HOME'], ".sagemathcloud", "info.json"), 'r'))
+            open(os.path.join(os.environ['HOME'], ".smc", "info.json"), 'r'))
         print("Try to open https://cloud.sagemath.com" + base_url + '/')
         app.run(host='0.0.0.0', port=port)
         import sys
