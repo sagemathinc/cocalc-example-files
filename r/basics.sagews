@@ -5,9 +5,9 @@ R Basics
 
 Just a demo, how R can be called from Sage to do something useful.
 ︡f6cdcb20-ffe0-42b4-b77e-4f6f46e1be55︡{"html":"<h2>R Basics</h2>\n\n<p>Just a demo, how R can be called from Sage to do something useful.</p>\n"}︡
-︠9bc1495a-b023-418a-a05f-f6fbdc30ee2b︠
+︠9bc1495a-b023-418a-a05f-f6fbdc30ee2bs︠
 print r
-︡ddfe7b8e-ace6-4bc4-ad37-22167ab90484︡{"stdout":"R Interpreter\n"}︡
+︡e77aec36-708d-4c1b-8379-e92c772e84d4︡︡{"stdout":"R Interpreter\n","done":false}︡{"done":true}
 ︠d7e14cf3-59c9-49cf-98a9-9fa562b5028f︠
 x = r.c((1,2,3,-1, 2,2.2))
 print x
