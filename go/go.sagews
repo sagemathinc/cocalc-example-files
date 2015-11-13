@@ -265,7 +265,7 @@ Inside a function, the := short assignment statement can be used in place of a v
 
 Outside a function, every construct begins with a keyword (var, func, and so on) and the := construct is not available.
 ︡10985086-f7ce-4dcb-a449-f30f7896001a︡{"html":"<h1>Short variable declarations</h1>\n\n<p>Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type.</p>\n\n<p>Outside a function, every construct begins with a keyword (var, func, and so on) and the := construct is not available.</p>\n"}︡
-︠4aca37c2-5b00-4be8-aff3-255bb7747a7f︠
+︠4aca37c2-5b00-4be8-aff3-255bb7747a7fs︠
 %go
 func main() {
     var i, j int = 1, 2
@@ -274,7 +274,7 @@ func main() {
 
     fmt.Println(i, j, k, c, python, java)
 }
-︡f1a6048a-5929-4653-95cc-9e49d4115fb8︡{"stdout":"1 2 3 true false no!\n"}︡
+︡ededb9dd-177c-498f-809e-bb1582b19f46︡︡{"stdout":"1 2 3 true false no!\n","done":false}︡{"done":true}
 ︠5b887c9c-2ca9-49f4-9ca1-2242e203c29bi︠
 %md
 # Basic types
@@ -298,7 +298,7 @@ Go's basic types are
     complex64 complex128
 
 ︡39cebb0b-38c0-49f0-ae9e-73b1eb9522d4︡{"html":"<h1>Basic types</h1>\n\n<p>Go&#8217;s basic types are</p>\n\n<pre><code>bool\n\nstring\n\nint  int8  int16  int32  int64\nuint uint8 uint16 uint32 uint64 uintptr\n\nbyte // alias for uint8\n\nrune // alias for int32\n     // represents a Unicode code point\n\nfloat32 float64\n\ncomplex64 complex128\n</code></pre>\n"}︡
-︠360bb0b3-30c4-4271-91a7-96a87431e5c3︠
+︠360bb0b3-30c4-4271-91a7-96a87431e5c3s︠
 %go
 
 import "math/cmplx"
@@ -315,7 +315,7 @@ func main() {
     fmt.Printf(f, MaxInt, MaxInt)
     fmt.Printf(f, z, z)
 }
-︡d0b7913c-cec2-4094-927d-20a689c236fe︡{"stdout":"bool(false)\nuint64(18446744073709551615)\ncomplex128((2+3i))\n"}︡
+︡78d13852-4e8a-4584-aba5-670f8724d0be︡︡{"stdout":"bool(false)\nuint64(18446744073709551615)\ncomplex128((2+3i))\n","done":false}︡{"done":true}
 ︠c2fbf1a4-d61e-40cb-bd43-ca154ba3b06ei︠
 %md
 # Type conversions
@@ -336,17 +336,17 @@ Or, put more simply:
 
 Unlike in C, in Go assignment between items of different type requires an explicit conversion. Try removing the float64 or int conversions in the example and see what happens.
 ︡73a905f2-8216-4378-8ba4-4265cc074c19︡{"html":"<h1>Type conversions</h1>\n\n<p>The expression T(v) converts the value v to the type T.</p>\n\n<p>Some numeric conversions:</p>\n\n<pre><code>var i int = 42\nvar f float64 = float64(i)\nvar u uint = uint(f)\n</code></pre>\n\n<p>Or, put more simply:</p>\n\n<pre><code>i := 42\nf := float64(i)\nu := uint(f)\n</code></pre>\n\n<p>Unlike in C, in Go assignment between items of different type requires an explicit conversion. Try removing the float64 or int conversions in the example and see what happens.</p>\n"}︡
-︠09b03af4-8108-4b74-9a6b-13650c7f41b9︠
+︠09b03af4-8108-4b74-9a6b-13650c7f41b9s︠
 %go
 import "math"
 
 func main() {
     var x, y int = 3, 4
-    var f float64 = math.Sqrt(float64(3*3 + 4*4))
+    var f float64 = math.Sqrt(float64(3*3 + 4*4 + 5*5))
     var z int = int(f)
     fmt.Println(x, y, z)
 }
-︡cc8e9330-15c0-44c5-bb80-4fdb8b6a13bc︡{"stdout":"3 4 5\n"}︡
+︡e6789c1f-e730-4168-b96c-c7ac4135d736︡︡{"stdout":"3 4 7\n","done":false}︡{"done":true}
 ︠c4fc8c59-1872-4a60-a5c3-986d86e8f1b4i︠
 %md
 # Constants
@@ -1073,12 +1073,18 @@ Let's have some fun with functions.
 
 Implement a fibonacci function that returns a function (a closure) that returns successive fibonacci numbers.
 ︡5785dbe7-55e6-4a53-a87e-c8bcbb26c9c8︡{"html":"<h1>Exercise: Fibonacci closure</h1>\n\n<p>Let&#8217;s have some fun with functions.</p>\n\n<p>Implement a fibonacci function that returns a function (a closure) that returns successive fibonacci numbers.</p>\n"}︡
-︠93dcf2ca-075f-4a91-b180-8bcf1579518b︠
+︠93dcf2ca-075f-4a91-b180-8bcf1579518bs︠
 %go
 
 // fibonacci is a function that returns
 // a function that returns an int.
 func fibonacci() func() int {
+	x := 0
+	y := 1
+	return func() int {
+		x,y = y,x+y
+		return x
+	}
 }
 
 func main() {
@@ -1087,7 +1093,7 @@ func main() {
         fmt.Println(f())
     }
 }
-︡f4cae6d7-0264-455f-8cd7-cd13cf6bb229︡{"stderr":"# command-line-arguments\n./ca433c87-2dc0-4f0b-8cfa-994ab0b18de6.go:7: missing return at end of function\n"}︡
+︡65bc8657-2ce5-41d7-b48f-f0fcdbbc712c︡︡{"stdout":"1\n1\n2\n3\n5\n8\n13\n21\n34\n55\n","done":false}︡{"done":true}
 ︠9640ed4b-54d4-419b-8872-fe3290b2ea0di︠
 
 %md
@@ -1201,16 +1207,31 @@ $$
 
 Find the cube root of 2, just to make sure the algorithm works. There is a [Pow](http://golang.org/pkg/math/cmplx/#Pow) function in the math/cmplx package.
 ︡4ce5402c-fc34-472a-aebd-ca6198f3ca1f︡{"html":"<h1>Advanced Exercise: Complex cube roots</h1>\n\n<p>Let&#8217;s explore Go&#8217;s built-in support for complex numbers via the <code>complex64</code> and <code>complex128</code> types. For cube roots, Newton&#8217;s method amounts to repeating:\n$$\nz = z- \\frac{z^3-x}{3z^2}\n$$</p>\n\n<p>Find the cube root of 2, just to make sure the algorithm works. There is a <a href=\"http://golang.org/pkg/math/cmplx/#Pow\">Pow</a> function in the math/cmplx package.</p>\n"}︡
-︠18e1aef0-48bf-4db4-b9c4-ffdc68204bf9︠
+︠18e1aef0-48bf-4db4-b9c4-ffdc68204bf9s︠
 %go
 
+import (
+	"fmt"
+	"math/cmplx"
+)
+
 func Cbrt(x complex128) complex128 {
+	z := complex128(2)
+	s := complex128(0)
+	for {
+		z = z - (cmplx.Pow(z,3) - x)/(3 * (z * z))
+		if cmplx.Abs(s-z) < 1e-17 {
+			break
+		}
+		s = z
+	}
+	return z
 }
 
 func main() {
     fmt.Println(Cbrt(2))
 }
-︡728c04ea-5783-482e-9c11-276683aacc18︡{"stderr":"# command-line-arguments\n./12caf984-f34b-48cb-97be-3c32f3615f38.go:5: missing return at end of function\n"}︡
+︡9401f4ba-4a57-4e59-a195-0e919e2e7103︡︡{"stdout":"(1.2599210498948732+0i)\n","done":false}︡{"done":true}
 ︠d308b105-6ccb-4ac7-bb75-8a14c88fcc2fi︠
 %md
 # Methods and Interfaces
@@ -1631,7 +1652,7 @@ Implement a `rot13Reader` that implements `io.Reader` and reads from an `io.Read
 
 The `rot13Reader` type is provided for you. Make it an `io.Reader` by implementing its `Read` method.
 ︡f79d5829-49de-4f62-bd15-447963d64575︡{"html":"<h1>Exercise: Rot13 Reader</h1>\n\n<p>A common pattern is an <code>io.Reader</code> that wraps another <code>io.Reader</code>, modifying the stream in some way.</p>\n\n<p>For example, the <code>gzip.NewReader</code> function takes an <code>io.Reader</code> (a stream of gzipped data) and returns a <code>*gzip.Reader</code> that also implements <code>io.Reader</code> (a stream of the decompressed data).</p>\n\n<p>Implement a <code>rot13Reader</code> that implements <code>io.Reader</code> and reads from an <code>io.Reader</code>, modifying the stream by applying the ROT13 substitution cipher to all alphabetical characters.</p>\n\n<p>The <code>rot13Reader</code> type is provided for you. Make it an <code>io.Reader</code> by implementing its <code>Read</code> method.</p>\n"}︡
-︠f264369f-15eb-4b63-966b-38c3f7e3eebc︠
+︠f264369f-15eb-4b63-966b-38c3f7e3eebcs︠
 %go
 
 
@@ -1645,13 +1666,25 @@ type rot13Reader struct {
     r io.Reader
 }
 
+func (rot *rot13Reader) Read(p []byte) (n int, err error) {
+	n,err = rot.r.Read(p)
+	for i := 0; i < len(p); i++ {
+		if (p[i] >= 'A' && p[i] < 'N') || (p[i] >='a' && p[i] < 'n') {
+			p[i] += 13
+		} else if (p[i] > 'M' && p[i] <= 'Z') || (p[i] > 'm' && p[i] <= 'z'){
+			p[i] -= 13
+		}
+	}
+	return
+}
+
 func main() {
     s := strings.NewReader(
         "Lbh penpxrq gur pbqr!")
     r := rot13Reader{s}
     io.Copy(os.Stdout, &r)
 }
-︡fc208306-a04b-48a9-be12-462cf4b1d8ce︡{"stderr":"# command-line-arguments\n./cfc58d42-5c15-4fbe-a1fc-cd76012e544f.go:18: cannot use &r (type *rot13Reader) as type io.Reader in function argument:\n\t*rot13Reader does not implement io.Reader (missing Read method)\n"}︡
+︡34a2c829-73e0-4a6c-a5e1-52348dd91f94︡︡{"stdout":"You cracked the code!","done":false}︡{"done":true}
 ︠109c999b-00bf-4e6c-893a-b3260fb3a6aai︠
 %md
 # Concurrency
