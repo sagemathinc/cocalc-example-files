@@ -14,7 +14,7 @@ from sage.plot.plot3d.index_face_set import IndexFaceSet
 V = x['V']; F3=x['F3']-1; F4=x['F4']-1
 Y = IndexFaceSet(F3,V,color='green') + IndexFaceSet(F4,V,color='green')
 Y = Y.rotateZ(-1); Y = Y.rotateX(-1)
-show(Y, frame=False, figsize=4)
+show(Y, frame=False)
 ︡fd3e1f76-4517-4d87-94cf-0fb6c95ddfa7︡{"auto":true}︡{"html":"<div id=848dc08b-bb7b-4b77-a904-96c457ecdf67 style='border:1px solid grey'></div>"}︡{"obj":"{\"foreground\": null, \"camera_distance\": 28.513779200054678, \"height\": null, \"width\": null, \"renderer\": null, \"background\": null}","javascript":{"coffeescript":false,"code":"$('#848dc08b-bb7b-4b77-a904-96c457ecdf67').salvus_threejs(obj)"},"once":false}︡
 ︠5aaaee4f-595a-4775-99a3-d4dce36d5ae8︠
 # 53756 vertices!
