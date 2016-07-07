@@ -19,6 +19,7 @@ Authors
 * William Stein
 * Theron Hitchman (SageBeginnerTutorial)
 * Gustav Delius
+* Hal Snyder
 
 License
 -------
