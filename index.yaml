@@ -1,0 +1,11 @@
+---
+tags:
+    calc: Calculus
+    sage: SageMath
+licenses:
+    gpl3: GNU General Public License 3.0
+---
+title: SageMath
+tags:
+- sage
+license: ccby
