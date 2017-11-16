@@ -5,7 +5,7 @@ tags:
 licenses:
     gpl3: GNU General Public License 3.0
 ---
-title: SageMath
+title: SageMath in CoCalc
 tags:
 - sage
-license: ccby
+src: sage/
