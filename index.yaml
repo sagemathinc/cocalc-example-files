@@ -2,10 +2,20 @@
 tags:
     calc: Calculus
     sage: SageMath
+    r: R Project
 licenses:
     gpl3: GNU General Public License 3.0
+    a20: Apache 2.0
 ---
 title: SageMath in CoCalc
 tags:
 - sage
 src: sage/
+license: a20
+---
+title: R in Cocalc
+tags:
+- r
+src: r/
+description: 'Learn how to get started with [R Statistical Software](http://www.r-project.org/) in CoCalc'
+license: a20
