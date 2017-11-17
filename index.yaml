@@ -8,6 +8,9 @@ licenses:
     a20: Apache 2.0
 ---
 title: SageMath in CoCalc
+thumbnail: thumbs/sage-in-cocalc.png
+description: >
+  Learn how to use [SageMath](http://www.sagemath.org) in CoCalc.
 tags:
 - sage
 src: sage/
