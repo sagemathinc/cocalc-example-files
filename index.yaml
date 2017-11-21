@@ -14,12 +14,14 @@ description: >
   Learn how to use [SageMath](http://www.sagemath.org) in CoCalc.
 tags:
 - sage
+- intro
 src: sage/
 license: a20
 ---
 title: R in Cocalc
 tags:
 - r
+- intro
 src: r/
 description: 'Learn how to get started with [R Statistical Software](http://www.r-project.org/) in CoCalc'
 license: a20
