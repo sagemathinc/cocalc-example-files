@@ -17,6 +17,7 @@ tags:
 - intro
 src: sage/
 license: a20
+category: intro
 ---
 title: R in Cocalc
 tags:
@@ -25,6 +26,7 @@ tags:
 src: r/
 description: 'Learn how to get started with [R Statistical Software](http://www.r-project.org/) in CoCalc'
 license: a20
+category: intro
 ---
 title: Markdown in Cocalc
 description: Quick introduction and reference guide for working with Markdown text formatting in CoCalc.
@@ -34,3 +36,4 @@ tags:
 license: a20
 src: markdown/
 thumbnail: thumbs/markdown-thumb.png
+category: intro
