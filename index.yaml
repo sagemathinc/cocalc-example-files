@@ -3,6 +3,7 @@ tags:
     calc: Calculus
     sage: SageMath
     r: R Project
+    md: markdown
 licenses:
     gpl3: GNU General Public License 3.0
     a20: Apache 2.0
@@ -22,3 +23,11 @@ tags:
 src: r/
 description: 'Learn how to get started with [R Statistical Software](http://www.r-project.org/) in CoCalc'
 license: a20
+---
+title: Markdown in Cocalc
+description: Quick introduction and reference guide for working with Markdown text formatting in CoCalc
+tags:
+- md
+- intro
+license: a20
+src: markdown/
