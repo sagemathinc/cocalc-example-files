@@ -1,9 +1,13 @@
 ---
 tags:
-    calc: Calculus
-    sage: SageMath
-    r: R Project
-    md: Markdown
+    calc:
+      name: Calculus
+    sage:
+      name: SageMath
+    r:
+      name: R Project
+    md:
+      name: Markdown
 licenses:
     gpl3: GNU General Public License 3.0
     a20: Apache 2.0
