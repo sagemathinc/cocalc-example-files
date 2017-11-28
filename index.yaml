@@ -8,32 +8,66 @@ licenses:
     gpl3: GNU General Public License 3.0
     a20: Apache 2.0
 ---
+id: sagemath-cocalc
 title: SageMath in CoCalc
 thumbnail: thumbs/sage-in-cocalc.png
 description: >
   Learn how to use [SageMath](http://www.sagemath.org) in CoCalc.
 tags:
 - sage
+- math
 - intro
 src: sage/
 license: a20
 category: intro
 ---
-title: R in Cocalc
+id: r-cocalc
+title: R Statistical Software in CoCalc
 tags:
 - r
+- stats
 - intro
 src: r/
 description: 'Learn how to get started with [R Statistical Software](http://www.r-project.org/) in CoCalc'
 license: a20
 category: intro
+thumbnail: thumbs/r-in-cocalc.png
 ---
-title: Markdown in Cocalc
+id: md-cocalc
+title: Markdown in CoCalc
 description: Quick introduction and reference guide for working with Markdown text formatting in CoCalc.
 tags:
 - md
 - intro
 license: a20
 src: markdown/
-thumbnail: thumbs/markdown-thumb.png
+thumbnail: thumbs/markdown-in-cocalc.png
 category: intro
+---
+id: sagetex-cocalc
+title: SageTeX in CoCalc
+description: >
+  SageTex enables LaTeX to evaluate Sage-code right inside the document – e.g. `$\sage{1+1}$` produces the formula `$2$`
+  and `\sageplot{...}` calculates and draws a graphic.
+  CoCalc fully manages the compilation process behind the scenes for you.
+website: https://ctan.org/pkg/sagetex?lang=en
+src: latex/sagetex/
+license: a20
+thumbnail: thumbs/sagetex-in-cocalc.png
+---
+id: latex-beamer-cocalc
+title: Minimal LaTeX beamer presentation
+description: This is a quick minimal beamer presentation template.
+website: https://en.wikipedia.org/wiki/Beamer_(LaTeX)
+license: a20
+thumbnail: thumbs/latex-beamer-in-cocalc.png
+src: latex/presentation/
+---
+id: latex-multiple-files-cocalc
+title: Multiple source files in CoCalc
+description: >
+  This template explains and demonstrates how to work with multiple source files in LaTeX on CoCalc.
+  It allows you to edit each individual part with preview, and then combines all parts into one master document.
+license: a20
+src: latex/multiple-files/
+thumbnail: thumbs/latex-multiple-documents.png
