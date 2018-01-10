@@ -37,6 +37,17 @@ license: a20
 category: intro
 thumbnail: thumbs/r-in-cocalc.png
 ---
+id: julia-cocalc
+title: Julia in CoCalc
+tags:
+- intro
+- julia
+src: julia/
+description: 'Learn how to get started with [Julia](https://www.julialang.org/) in CoCalc'
+license: a20
+category: intro
+thumbnail: julia/julia-logo-325-by-225.png
+---
 id: md-cocalc
 title: Markdown in CoCalc
 description: Quick introduction and reference guide for working with Markdown text formatting in CoCalc.
