@@ -35,7 +35,7 @@ Enumeration:
 
 * Links: `[name of link](http://url.it.links/to)`
 
-## Formuas
+## Formulas
 
 It is also possible to embed formulas. They are formatted using [MathJax](https://www.mathjax.org/).
 
