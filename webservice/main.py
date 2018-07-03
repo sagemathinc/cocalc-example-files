@@ -12,8 +12,8 @@ app = Flask(__name__)
 #app.debug = True  # Uncomment this if you wish to debug
 
 port = 8765
-info = json.load(
-    open(os.path.join(os.environ['HOME'], ".smc", "info.json"), 'r'))
+info_path = os.path.join(os.environ['HOME'], ".smc", "info.json")
+info = json.load(open(info_path, 'r'))
 base_url = "/%s/port/%s" % (info['project_id'], port)
 
 html_template = """
@@ -43,25 +43,48 @@ def info():
     <ul>
     <li><a href="%(route)s/">%(route)s/ - list of routes</a></li>
     <li><a href="%(route)s/get">%(route)s/get - simple get request</a></li>
-    </ul>""" % {'route': base_url}
+    <li><a href="%(route)s/header">%(route)s/header - header information</a></li>
+    </ul>""" % {
+        'route': base_url
+    }
     return html_template % {'title': 'Info', 'content': content}
 
 
 @app.route(base_url + '/get', methods=['GET'])
 def get_something():
     content = """<p>Try something like <a href="%(base_url)s/get?something=foo">%(base_url)s/get?something=foo</a></p>""" % {
-        'base_url': base_url}
+        'base_url': base_url
+    }
     if request.method == 'GET':
         something = request.args.get("something", "")
         if len(something) > 0:
             content = "Got " + something
     return html_template % {'title': 'Info', 'content': content}
 
+
+@app.route(base_url + '/header', methods=['GET'])
+def get_header():
+
+    header = ''
+
+    for k, v in request.headers.iteritems():
+        header += '{} = {}\n'.format(k, v)
+
+    content = '''
+    <div>The header information I got about you ...</div>
+    <pre>
+    {header}
+    </pre>
+    '''.format(header=header)
+
+    return content
+
+
 if __name__ == "__main__":
     try:
         info = json.load(
             open(os.path.join(os.environ['HOME'], ".smc", "info.json"), 'r'))
-        print("Try to open https://cloud.sagemath.com" + base_url + '/')
+        print("Try to open https://cocalc.com" + base_url + '/')
         app.run(host='0.0.0.0', port=port)
         import sys
         sys.exit(0)
