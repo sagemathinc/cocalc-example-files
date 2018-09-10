@@ -1,0 +1,26 @@
+# Test
+
+```
+just code formatted
+```
+
+and some R code
+
+```{r}
+xx <- rnorm(2000)
+paste("length of xx:", length(xx))
+plot(xx)
+```
+
+**ok** _italic_ and $\tfrac{1}{997} = `r 1/997`$.
+
+<div align='right'>right hand side</div>
+
+link to [google](https://google.com).
+
+## and a table
+
+```{r echo = FALSE, results = 'asis'}
+library(knitr)
+kable(mtcars[1:15, ], caption = "this is a knitr kable.")
+```

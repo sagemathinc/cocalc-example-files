@@ -1,0 +1,68 @@
+---
+title: python3 test
+---
+
+```{r setup, include=FALSE}
+# this setup code is important, otherwise it won't run!
+library(reticulate)
+use_python('/usr/bin/python3')
+
+# alternatively, you can use this to set an engine executable
+#knitr::opts_chunk$set(engine.path = list(
+#  python = '/usr/bin/python3'
+#))
+```
+
+# Hi, I'm Python
+
+```{python}
+x = 12 + 23**5
+print(x)
+```
+
+Running
+
+```{python}
+import sys
+print(sys.version)
+```
+
+## Plotting
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+xx = np.linspace(0, 10, 100)
+yy = np.sin(xx)
+plt.plot(xx, yy)
+plt.show()
+```
+
+## R still works, too
+
+```{r}
+x <- c(1,2,3,2,1)
+plot(x)
+```
+
+## Interactions between R and Python
+
+This uses the [reticulate](https://github.com/rstudio/reticulate) R library:
+
+Retrieve the value of `x` from the Python session again:
+
+```{r}
+py$x
+```
+
+Assign to a variable in the Python session from R:
+
+```{r}
+py$y = 1:5
+```
+
+See the value of `y` in the Python session:
+
+```{python}
+print(y)
+```

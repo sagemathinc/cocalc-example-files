@@ -1,0 +1,63 @@
+---
+title: "Beamer Demo"
+author: "John Doe"
+date: March 22, 2005
+fontsize: 10pt
+output:
+  beamer_presentation:
+    theme: "Copenhagen"
+    colortheme: "dolphin"
+---
+
+# In the morning
+
+Just a simple calculation: $123+234 = `r 123+234`$.
+
+---
+
+## Getting up
+
+- Turn off alarm
+- Get out of bed
+
+## Breakfast
+
+- Eat eggs
+- Drink coffee
+
+# In the evening
+
+## Dinner
+
+- Eat spaghetti
+- Drink wine
+
+---
+
+A simple standard plot:
+
+```{r, cars, fig.cap="A scatterplot.", echo=FALSE}
+plot(cars)
+```
+
+---
+
+## Going to sleep
+
+- Get in bed
+- Count sheep
+
+## Calling C from R
+
+```{c, test-c, results='hide'}
+void square(double *x) {
+  *x = *x * *x;
+}
+```
+
+Test the `square()` function:
+
+```{r}
+.C('square', 9)[[1]]
+.C('square', 123)[[1]]
+```

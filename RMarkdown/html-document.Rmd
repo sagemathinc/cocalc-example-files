@@ -1,0 +1,76 @@
+---
+title: "HTML test"
+# themes:
+#   “cerulean”, “journal”, “flatly”, “readable”, “spacelab”, “united”,
+#   “cosmo”, “lumen”, “paper”, “sandstone”, “simplex”, “yeti”
+# code highlighting:
+#   “default”, “tango”, “pygments”, “kate”, “monochrome”, “espresso”,
+#   “zenburn”, “haddock”, “textmate”
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    self_contained: false
+    code_folding: show
+    theme: lumen
+    highlight: textmate
+    css: html-document.css
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+theme_set(theme_bw(base_size=12))
+theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
+             plot.background = element_rect(fill = "transparent", colour = NA))
+knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+```
+
+# Inline R
+
+Inline formula $\tfrac{7}{2^3 + 1} = `r 7 / (2^3 + 1)`$ code and a random `r rnorm(10)` vector.
+
+# Random points in R
+
+This plots 2000 random points …
+
+```{r}
+xx <- rnorm(2000)
+yy <- rnorm(2000)
+plot(xx, yy, pch=20, color = rgb(0,0,0,alpha=0.3))
+```
+
+
+## Enhanced Scatterplot
+
+```{r}
+library(car)
+attach(mtcars)
+scatterplotMatrix(~mpg+disp+drat+wt|cyl,
+  data=mtcars,
+  main="Three Cylinder Options"
+)
+```
+
+# ggplot2 demo
+
+This is straight from a [ggplot2 introduction](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html).
+
+```{r}
+# Setup ----------------------------------------------
+options(scipen=999)
+library(ggplot2)
+data("midwest", package = "ggplot2")
+theme_set(theme_bw())
+# midwest <- read.csv("http://goo.gl/G1K41K")  # bkup data source
+
+# Add plot components --------------------------------
+gg <- ggplot(midwest, aes(x=area, y=poptotal)) +
+  geom_point(aes(col=state, size=popdensity), alpha=0.5) +
+  geom_smooth(method="loess", se=F) + xlim(c(0, 0.1)) + ylim(c(0, 500000)) +
+  labs(title="Area Vs Population",
+    y="Population", x="Area", caption="Source: midwest")
+
+# Call plot ------------------------------------------
+plot(gg)
+```
+

@@ -1,0 +1,31 @@
+---
+title: "RMarkdown in CoCalc"
+bibliography: readme.bib
+---
+
+## Introduction
+
+RMarkdown allows you to write a HTML document, a scientific article, a presentation (interactive website or LaTeX beamer), or even a book by just using [Markdown](https://bookdown.org/yihui/rmarkdown/markdown-syntax.html) syntax and embedded programming code.
+The "**R**" in RMarkdown stands for the [R statistical computing](https://www.R-project.org/) language,
+but it also supports [Python](https://www.python.org) and many other langauges.
+
+To make full use of this approach, look at the included example documents,
+the [articles](./rticle) and make sure to check out advanced concepts like the "frontmatter" -- which you can see at the top between the triple dashes -- to configure the document.
+
+For example, you can use a [bibtex file](readme.bib) to collect other documents.
+Use it to include a reference in your file like for R (@R-base), SageMath (@sagemath) and CoCalc [@cocalc].
+
+Of course, you can include formulas like $$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$$ and much more ...
+
+## Included documents
+
+- [Basic.Rmd](basic.Rmd) -- this shows how to produce a simple HTML with some R code and plots.
+- [html-document.Rmd](html-document.Rmd) -- shows how to customize an HTML document.
+- [python3.Rmd](python3.Rmd) -- showcase how to use Python 3 for code and plots.
+- [beamer-demo.Rmd](beamer-demo.Rmd) -- a LaTeX beamer presentation (produces as PDF!)
+
+## Learn more
+
+- [Website](https://rmarkdown.rstudio.com)
+- [Tutorial](https://rmarkdown.rstudio.com/lesson-1.html)
+- [The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
