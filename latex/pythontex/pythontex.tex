@@ -94,17 +94,18 @@ h = Integral(exp(-phi**2), (phi, 0, oo))
 
 \pagebreak
 
-\subsection{Block of code}
+\subsection{Code block with a plot}
 
-... with a plot:
+The session is \verb|pycode| to be distinct from the \verb|default| session.
+This allows \pytex\ to speed up the execution by running the sympy code and the plot below in parallel.
 
-\begin{pycode}
+\begin{pycode}[pycode]
 from pylab import *
 # Define f(t), the desired function to plot
 def f(t):
-  return cos(2 * pi * t) * exp(-t)
+  return cos(2 * pi * exp(t)) * exp(-t)
 # Generate the points (t_i, y_i) to plot
-t = linspace(0, 5, 500)
+t = linspace(0, 4, 1000)
 y = f(t)
 # Begin with an empty plot, 5 x 3 inches
 clf()
@@ -114,7 +115,7 @@ rc("text", usetex=True)
 # Generate the plot with annotations
 plot(t, y)
 title("Damped exponential decay")
-text(3, 0.15, r"$y = \cos(2 \pi t) e^{-t}$")
+text(2.5, 0.4, r"$y = \cos(2 \pi \exp(t)) e^{-t}$")
 xlabel("time (s)")
 ylabel("voltage (mV)")
 # Save the plot as a PDF file
