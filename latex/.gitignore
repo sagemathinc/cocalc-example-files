@@ -19,3 +19,4 @@
 *.synctex.gz
 *.sagetex.sage
 *.sagetex.sage.py
+*.pytxcode

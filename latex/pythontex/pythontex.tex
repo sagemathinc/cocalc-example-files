@@ -1,0 +1,150 @@
+% Showcasing PythonTeX
+% Some examples are taken from
+% http://mirrors.ctan.org/macros/latex/contrib/pythontex/pythontex_gallery.pdf
+
+\documentclass{scrartcl}
+
+% pdflatex
+\ifx\pdfmatch\undefined
+\else
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+\fi
+% xetex:
+\ifx\XeTeXinterchartoks\undefined
+\else
+    \usepackage{fontspec}
+    \defaultfontfeatures{Ligatures=TeX}
+\fi
+% luatex:
+\ifx\directlua\undefined
+\else
+    \usepackage{fontspec}
+\fi
+% End engine-specific settings
+
+\usepackage[parfill]{parskip}
+\usepackage{amsmath,amssymb}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage[svgnames]{xcolor}
+\usepackage{url}
+\urlstyle{same}
+
+\usepackage[makestderr]{pythontex}
+\restartpythontexsession{\thesection}
+
+\newcommand{\pytex}{Python\TeX}
+\title{\pytex\ in CoCalc}
+\author{Name of Author}
+
+\begin{document}
+
+\maketitle
+
+CoCalc supports running \pytex\ automatically for documents that load the \verb|pythontex| package.
+It executes it using the \verb|pythontex3| engine for Python 3.
+
+\section{\pytex\ Examples}
+
+\begin{pycode}
+import math
+print(r'Pi = {}'.format(math.pi))
+\end{pycode}
+
+A huge number is \py{2*3**45 - 1}.
+
+And a sum of unicode characters: \py{"ä"+"µ"+"ß"}.
+
+\subsection{A simple formula}
+
+$\frac{3}{\pi} = \py{3 / math.pi}$.
+
+\subsection{Native SymPy Support}
+
+Via the \verb|sympy|  command and inside a \verb|sympyblock|.
+
+\begin{sympyblock}
+var('x, y, z')
+z = x + y
+\end{sympyblock}
+
+Now we can access what $z$ is equal to:
+
+\[z=\sympy{z}\]
+
+Many things are possible, including some very nice calculus.
+First, define the integral expression $g$ and then us \verb|g.doit()| to run it inside a \LaTeX\ formula.
+
+\begin{sympyblock}
+f = x**3 + cos(x)**5
+g = Integral(f, x)
+\end{sympyblock}
+
+\[\sympy{g}=\sympy{g.doit()}\]
+
+It's easy to use arbitrary symbols in equations.
+
+\begin{sympyblock}
+phi = Symbol(r'\phi')
+h = Integral(exp(-phi**2), (phi, 0, oo))
+\end{sympyblock}
+
+\[\sympy{h}=\sympy{h.doit()}\]
+
+\pagebreak
+
+\subsection{Block of code}
+
+... with a plot:
+
+\begin{pycode}
+from pylab import *
+# Define f(t), the desired function to plot
+def f(t):
+  return cos(2 * pi * t) * exp(-t)
+# Generate the points (t_i, y_i) to plot
+t = linspace(0, 5, 500)
+y = f(t)
+# Begin with an empty plot, 5 x 3 inches
+clf()
+figure(figsize=(5, 3))
+# Use TeX fonts
+rc("text", usetex=True)
+# Generate the plot with annotations
+plot(t, y)
+title("Damped exponential decay")
+text(3, 0.15, r"$y = \cos(2 \pi t) e^{-t}$")
+xlabel("time (s)")
+ylabel("voltage (mV)")
+# Save the plot as a PDF file
+savefig("myplot.pdf", bbox_inches="tight")
+# Include the plot in the current LaTeX document
+print(r"\begin{center}")
+print(r"\includegraphics[width=0.85\textwidth]{myplot.pdf}")
+print(r"\end{center}")
+\end{pycode}
+
+\section{Error Handling}
+
+CoCalc also displays the first processing error next to the line \pytex\ reports.
+The example below should have such a ``bug'' indicator.
+
+\pytex\ also allows code to be typeset next to the stderr it produces.
+This requires the package option \verb|makestderr|.
+
+\begin{pyblock}[errorsession][numbers=left]
+x = 123
+y = 345
+z = x + y +
+\end{pyblock}
+
+This code causes a syntax error:
+
+\stderrpythontex[verbatim][frame=single]
+
+\section{Learn more}
+
+Package documentation: \url{https://ctan.org/pkg/pythontex}
+
+\end{document}
