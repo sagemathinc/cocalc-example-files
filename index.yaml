@@ -1,16 +1,15 @@
----
 tags:
-    calc:
-      name: Calculus
-    sage:
-      name: SageMath
-    r:
-      name: R Project
-    md:
-      name: Markdown
+  calc:
+    name: Calculus
+  sage:
+    name: SageMath
+  r:
+    name: R Project
+  md:
+    name: Markdown
 licenses:
-    gpl3: GNU General Public License 3.0
-    a20: Apache 2.0
+  gpl3: GNU General Public License 3.0
+  a20: Apache 2.0
 ---
 id: sagemath-cocalc
 title: SageMath in CoCalc
@@ -18,9 +17,9 @@ thumbnail: thumbs/sage-in-cocalc.png
 description: >
   Learn how to use [SageMath](http://www.sagemath.org) in CoCalc.
 tags:
-- sage
-- math
-- intro
+  - sage
+  - math
+  - intro
 src: sage/
 license: a20
 category: intro
@@ -28,11 +27,12 @@ category: intro
 id: r-cocalc
 title: R Statistical Software in CoCalc
 tags:
-- r
-- stats
-- intro
+  - r
+  - stats
+  - intro
 src: r/
-description: 'Learn how to get started with [R Statistical Software](http://www.r-project.org/) in CoCalc'
+description: >
+  Learn how to get started with [R Statistical Software](http://www.r-project.org/) in CoCalc
 license: a20
 category: intro
 thumbnail: thumbs/r-in-cocalc.png
@@ -40,20 +40,34 @@ thumbnail: thumbs/r-in-cocalc.png
 id: julia-cocalc
 title: Julia in CoCalc
 tags:
-- intro
-- julia
+  - intro
+  - julia
 src: julia/
-description: 'Learn how to get started with [Julia](https://www.julialang.org/) in CoCalc'
+description: >
+  Learn how to get started with [Julia](https://www.julialang.org/) in CoCalc.
 license: a20
 category: intro
 thumbnail: julia/julia-logo-325-by-225.png
 ---
+id: rmarkdown
+title: RMarkdown in CoCalc
+tags:
+  - intro
+  - r
+src: RMarkdown/
+description: >
+  Various examples of [RMarkdown](https://rmarkdown.rstudio.com/) documents in CoCalc.
+thumbnail: thumbs/rmd.png
+category: intro
+license: a20
+---
 id: md-cocalc
 title: Markdown in CoCalc
-description: Quick introduction and reference guide for working with Markdown text formatting in CoCalc.
+description: >
+  Quick introduction and reference guide for working with Markdown text formatting in CoCalc.
 tags:
-- md
-- intro
+  - md
+  - intro
 license: a20
 src: markdown/
 thumbnail: thumbs/markdown-in-cocalc.png
@@ -70,14 +84,31 @@ src: latex/sagetex/
 license: a20
 thumbnail: thumbs/sagetex-in-cocalc.png
 tags:
-- intro
-- math
-- sage
+  - intro
+  - math
+  - sage
+category: latex
+---
+id: pythontex
+title: PythonTeX in CoCalc
+src: latex/pythontex/
+license: a20
+description: >
+  [PythonTeX]() enhances LaTeX documents to insert and run Python code from within the document itself.
+  E.g. `\py{2*3}` inserts `5`, more advanced mathematics via `sympy` blocks,
+  and you can insert dynamically create plots.
+  CoCalc fully manages the compilation process behind the scenes for you.
+thumbnail: thumbs/pythontex.png
+tags:
+  - intro
+  - latex
+  - math
 category: latex
 ---
 id: latex-beamer-cocalc
 title: Minimal LaTeX beamer presentation
-description: This is a quick minimal beamer presentation template.
+description: >
+  This is a quick minimal beamer presentation template.
 website: https://en.wikipedia.org/wiki/Beamer_(LaTeX)
 license: a20
 thumbnail: thumbs/latex-beamer-in-cocalc.png
