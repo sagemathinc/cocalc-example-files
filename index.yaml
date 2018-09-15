@@ -7,6 +7,8 @@ tags:
     name: R Project
   md:
     name: Markdown
+  latex:
+    name: LaTeX
 licenses:
   gpl3: GNU General Public License 3.0
   a20: Apache 2.0
@@ -87,6 +89,7 @@ tags:
   - intro
   - math
   - sage
+  - latex
 category: latex
 ---
 id: pythontex
@@ -114,6 +117,8 @@ license: a20
 thumbnail: thumbs/latex-beamer-in-cocalc.png
 src: latex/presentation/
 category: latex
+tags:
+  - latex
 ---
 id: latex-multiple-files-cocalc
 title: Multiple source files in CoCalc
@@ -124,3 +129,5 @@ license: a20
 src: latex/multiple-files/
 thumbnail: thumbs/latex-multiple-documents.png
 category: latex
+tags:
+  - latex
