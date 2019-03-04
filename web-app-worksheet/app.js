@@ -1,6 +1,6 @@
 $(".app-button").click(function(e) {
 
-    n = parseFloat($(".app-input").val());
+    var n = parseFloat($(".app-input").val());
 
     worksheet.execute_code({
         code: "salvus.data['n'] * random()",
