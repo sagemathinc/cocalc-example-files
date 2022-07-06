@@ -1,6 +1,8 @@
 CoCalc Templates
 ================
 
+  [<img src="https://user-images.githubusercontent.com/1276278/177587186-dfb8e8ea-08aa-4fcb-911a-96f0ae93425b.svg">](https://cocalc.com/github/sagemathinc/cocalc-example-files)
+
 This is a collection of some templates for worksheets or scripts
 in [CoCalc](https://cocalc.com).
 
